@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent {
-
+  
   featuredReviews = [
     {
      title: 'The Legend Of Zelda',
