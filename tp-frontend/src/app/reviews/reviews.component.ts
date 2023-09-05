@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./reviews.component.scss']
 })
 export class ReviewsComponent {
-
+  name: string = 'Starfield'
+  rating: number = 83
 }
