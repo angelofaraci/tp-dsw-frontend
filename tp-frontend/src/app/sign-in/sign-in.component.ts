@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
+  
+  user = {
+   
+         id: '',
+         username: '',
+         password: '',
+         score: 0,
+         email: '',
+         phone: '',
+         level: 1
+};
+  
+  
+  
+  
+  signUp(){
+
+}
+
 
 }

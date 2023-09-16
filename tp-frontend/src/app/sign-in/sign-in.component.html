@@ -3,21 +3,21 @@
 <div class="container mt-4 border w-25">
     <div class="row m-3">
         <h2 class="text-center">Create an account</h2>
-        <div class="mb-3 form-group">
-            <label for="usuario" class="form-label mb-1">Username</label>
-            <input type="text" class="form-control" id="usuario" placeholder="Enter your username">
+        <form (submit)="signUp()">
+          <div class="mb-3 form-group">
+            <label for="user" class="form-label mb-1">Username</label>
+            <input type="text" class="form-control" id="usuario" placeholder="Enter your username" [(ngModel)]="user.username">
           </div>
         <div class="mb-3 form-group">
             <label for="correo-electronico" class="form-label mb-1">E-Mail</label>
-            <input type="text" class="form-control" id="correo-electronico" placeholder="Enter your email">
+            <input type="text" class="form-control" id="correo-electronico" [(ngModel)]="user.email" placeholder="Enter your email">
         </div>
           <div class="mb-3 form-group">
-            <label for="contraseña" class="form-label">Password</label>
-            <input type="password" class="form-control" id="contraseña" placeholder="Enter your password">
-          </div>
-          <div class="mb-3 form-group">
-            <input type="password" class="form-control" id="verificar-contraseña" placeholder="Verify your password">
+            <label for="password"  class="form-label">Password</label>
+            <input type="password" class="form-control" id="contraseña" [(ngModel)]="user.password" placeholder="Enter your password">
           </div>
           <button type="submit" class="btn btn-primary btn-block mi-4 mt-2">Confirm Registration</button>
+        </form>
+        
     </div>
 </div>
