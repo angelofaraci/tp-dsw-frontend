@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -7,5 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AuthService {
 
-  constructor() { }
+  
+  private URL = 'http://localhost:3000/api/user'
+
+  constructor(private http: HttpClient) { }
+
+  signUp(user: any){
+    return this.http.post<any>(this.URL, user)
+  }
+
+
 }

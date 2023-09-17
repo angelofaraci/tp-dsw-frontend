@@ -6,15 +6,15 @@
         <form (submit)="signUp()">
           <div class="mb-3 form-group">
             <label for="user" class="form-label mb-1">Username</label>
-            <input type="text" class="form-control" id="usuario" placeholder="Enter your username" [(ngModel)]="user.username">
+            <input type="text" class="form-control" id="usuario" name="username" placeholder="Enter your username" [(ngModel)]="this.user.username">
           </div>
         <div class="mb-3 form-group">
             <label for="correo-electronico" class="form-label mb-1">E-Mail</label>
-            <input type="text" class="form-control" id="correo-electronico" [(ngModel)]="user.email" placeholder="Enter your email">
+            <input type="text" class="form-control" id="correo-electronico" name="email" [(ngModel)]="this.user.email" placeholder="Enter your email" >
         </div>
           <div class="mb-3 form-group">
             <label for="password"  class="form-label">Password</label>
-            <input type="password" class="form-control" id="contraseña" [(ngModel)]="user.password" placeholder="Enter your password">
+            <input type="password" class="form-control" id="contraseña" name="password" [(ngModel)]="this.user.password" placeholder="Enter your password" >
           </div>
           <button type="submit" class="btn btn-primary btn-block mi-4 mt-2">Confirm Registration</button>
         </form>
