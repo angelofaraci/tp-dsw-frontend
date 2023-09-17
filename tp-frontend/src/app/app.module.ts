@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,9 @@ import { LogInComponent } from './log-in/log-in.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CardComponent } from './card/card.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from 'src/auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { CardComponent } from './card/card.component';
     LogInComponent,
     CarouselComponent,
     NavBarComponent,
-    CardComponent
+    CardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,7 @@ import { CardComponent } from './card/card.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard , { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

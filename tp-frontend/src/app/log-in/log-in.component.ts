@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-log-in',
@@ -6,5 +11,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent {
+
+  constructor(private authService: AuthService, private router: Router){  }
+
+  user = {
+    email: '',
+    password: ''
+  }
+
+  logIn(){
+    this.authService.logIn(this.user)
+      .subscribe(
+        res => {
+          console.log(res)
+          localStorage.setItem('token', res.token)
+          this.router.navigate(['/home'])
+        },
+        err => {
+          console.log(err);
+          
+        }
+      )
+    
+  }
 
 }
