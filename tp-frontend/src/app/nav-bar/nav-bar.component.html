@@ -8,8 +8,8 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav" >
           <a class="nav-link"  routerLink="/login" *ngIf="!authService.loggedIn()">Log In</a>
-          <a class="nav-link" routerLink="/signup" *ngIf="!authService.loggedIn()">Sign In</a>
-          <a class="nav-link button" href="" (click)="authService.logOut()" *ngIf="authService.loggedIn()">Sign Out</a>
+          <a class="nav-link" routerLink="/signup" *ngIf="!authService.loggedIn()">Sign Up</a>
+          <a class="nav-link button" style="cursor: pointer;" (click)="authService.logOut()" *ngIf="authService.loggedIn()">Sign Out</a>
         </div>
       </div>
       <div class="col offset-8"> <a class="nav-link" routerLink="/myprofile">USUARIO</a></div>
