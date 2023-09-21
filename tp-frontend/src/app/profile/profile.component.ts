@@ -8,7 +8,12 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  user = {}
+  user = {
+    username: '',
+    email: '',
+    profilePicture: ''
+
+  }
 
   constructor(private userService: UserService) {}
 
@@ -16,7 +21,9 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserData()
       .subscribe(
         res =>{
-          console.log(res)
+          this.user = res.userData
+          console.log(this.user)
+          this.user.profilePicture = 'https://christopherscottedwards.com/wp-content/uploads/2018/07/Generic-Profile.jpg'
         },
         err => {
           console.log(err);
@@ -24,6 +31,11 @@ export class ProfileComponent implements OnInit {
         }
       )
   }
+
+  changeProfilePicture(image: string){
+    this.user.profilePicture = image
+  }
+
   
 
 

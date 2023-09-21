@@ -6,6 +6,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from 'src/auth.guard';
+import { GamePageComponent } from './game-page/game-page.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'myprofile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'signup', component: SignInComponent},
   { path: 'home', component: HomeComponent },
-  { path: 'reviewexample', component: ReviewsComponent },
+  { path: 'reviewexample', component: GamePageComponent },
   { path: '**',  redirectTo: '/home', pathMatch: 'full'}
 ];
 

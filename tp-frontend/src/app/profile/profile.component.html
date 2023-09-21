@@ -1,2 +1,20 @@
 <app-nav-bar></app-nav-bar>>
-<p>profile works!</p>
+
+
+<!-- Informacion del usuario -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+          <img src="{{this.user.profilePicture}}" style="width: 200px; height: 200px;" alt=""> 
+        </div>
+        <div class="col-6">
+            <h1>
+                Usuario: {{ this.user.username }}
+            </h1>
+            <h2>
+                Email:  {{ this.user.email }}
+            </h2>
+        </div>
+    </div>
+</div>

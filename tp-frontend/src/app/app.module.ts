@@ -15,6 +15,7 @@ import { CardComponent } from './card/card.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from 'src/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { GamePageComponent } from './game-page/game-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     CarouselComponent,
     NavBarComponent,
     CardComponent,
-    ProfileComponent
+    ProfileComponent,
+    GamePageComponent
   ],
   imports: [
     BrowserModule,
