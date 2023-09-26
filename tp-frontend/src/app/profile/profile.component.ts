@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
         res =>{
           this.user = res.userData
           console.log(this.user)
-          this.user.profilePicture = 'https://christopherscottedwards.com/wp-content/uploads/2018/07/Generic-Profile.jpg'
+          this.user.profilePicture = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
         },
         err => {
           console.log(err);
