@@ -1,0 +1,21 @@
+.level{
+    width: 200px; 
+    height: 200px;
+    text-align:center;
+    background-color: aquamarine;
+    border: 2px solid black; 
+    position:absolute; right: 0%;
+}
+
+.reviewsTitle{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+hr{
+    flex: 1;
+}
+.reviewsTitle h3{
+    padding: 0px 20px;
+}
