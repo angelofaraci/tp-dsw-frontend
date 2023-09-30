@@ -7,61 +7,68 @@
 <style>
 html {
    margin: 0px;
-   height: 100%;
-   width: 100%;
+   height: 1080px;
+   width: 100%;;
     }
 
 body {
    margin: 0px;
    min-height: 100%;
    width: 100%;
-   background:#f0ecdf;
+   background:linear-gradient(0deg, white, rgb(240, 240, 240));
    font-family: Verdana, Tahoma, Geneva, sans-serif;
     }
 </style>
 <body>
    <!-- Informacion del usuario -->
     <div class="container" style="padding-top: 3%;">
-        <div class="row" style="position: relative; height: 200px;">
-            <div class="col-2" style="width: 200px;">
-            <img src="{{this.user.profilePicture}}" style="width: 200px; height: 200px; border: 2px solid black; ;position: absolute; left: 0;" alt="">
-            </div>
-            <div class="col-6">
-                <h2>
-                Username: {{ this.user.username }}
-                </h2>
-                <h2 style="position:absolute; bottom:40% ">
-                    Email: {{ this.user.email }}
-                </h2>
-                <h2 style="position:absolute; bottom: 0;">
-                        Telefono: 3400515976
-                </h2>
-            </div>
-            <div class="col-2">
-                <div class="level">
-                    <div style="position: relative; top: 15%;">
-                        <h2>Level</h2>
-                        <h4 style="font-size:450%;">3</h4>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
         <div class="row justify-content-between" style="position: relative;">
-            <div class="col-2" style="width: 200px">
-                <h2 style="position: relative; text-align: center; text-decoration:underline;"> Edit Profile </h2>
+            <div class="col-2 reviewsTitle userLevelAndScore">
+                <h2 style="position:relative; margin: 2%;">
+                    Level: 3
+                </h2>
+            </div>
+            <div class="col-2 reviewsTitle">
+                <h1>
+                    {{ this.user.username }}
+                </h1>   
             </div> 
-            <div class="col-2" style="width: 200px">
-                <h2 style="position: relative; text-align: center;"> 230pts </h2>
+            <div class="col-2 reviewsTitle userLevelAndScore">
+                <h2 style="position:relative; margin: 2%;">
+                    Score: 230
+                </h2>
             </div>
         </div>
     </div>
-    <div class="row justify-content-md-center" style="position: relative;">
+    <div class="row justify-content-md-center" style="position: relative; padding-top: 13px;">
         <div class="reviewsTitle">
-            <hr>
+            <hr style="margin-left: 150px">
             <h3> My Reviews </h3>
-            <hr>
+            <hr style="margin-right: 150px">    
         </div>
     </div>
+    <div class="container" style="padding-top: 2%;">
+        <ul class="list-group list-group-horizontal" style="padding-top: 1%;">
+            <li class="list-group-item gameScore" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+                <h1>{{this.game.score}}</h1>
+            </li>
+            <li class="list-group-item ">
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h3 class="mb-1">Undertale</h3>
+                            <small>3 days ago</small>
+                        </div>
+                        <div>
+                            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam cupiditate, placeat recusandae earum enim hic ducimus laudantium id velit similique est reiciendis ipsam nobis voluptate iste magnam rerum exercitationem.</p>
+                        </div>
+                        <small style="font-style: italic; display: flex; justify-content: end;">Edited: 21/09/23</small> 
+                    </div>
+            </li>
+        </ul>
+        
+        
+    </div>
+    
+    
 </body>
 </html>

@@ -1,0 +1,13 @@
+.box{
+    max-height: 540px;
+    max-width: 1840px;
+    object-fit:cover;
+}
+.content{
+    max-width: 1200px; 
+    background-color: aliceblue;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    box-shadow: 1px 1px 10px black;
+}

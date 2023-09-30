@@ -1,21 +1,40 @@
-.level{
-    width: 200px; 
-    height: 200px;
-    text-align:center;
-    background-color: aquamarine;
-    border: 2px solid black; 
-    position:absolute; right: 0%;
-}
-
 .reviewsTitle{
     display: flex;
     flex-flow: row;
     justify-content: center;
     align-items: center;
+    text-shadow: 2px 2px 10px rgba(134, 134, 134, 0.2);
 }
 hr{
     flex: 1;
 }
+.reviewsTitle h1{
+    padding: 0px 20px;
+}
 .reviewsTitle h3{
     padding: 0px 20px;
+}
+.userLevelAndScore{
+    background-color: grey; 
+    border-style: groove;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: lightslategrey;
+    color: rgb(235, 235, 235);
+    text-shadow: 2px 2px 10px rgb(134, 134, 134);
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(134, 134, 134, 0.2);
+}
+
+.gameScore{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    color: rgb(235, 235, 235);
+    background-color: rgb(var(--color1),var(--color2),0);
+}
+.gameScore h1{
+    padding: 0px 20px;
+    text-shadow: 2px 2px 10px rgb(60, 60, 60);
 }
