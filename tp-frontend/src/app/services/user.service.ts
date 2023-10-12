@@ -15,4 +15,9 @@ export class UserService {
     return  this.http.get<any>(this.URL + '/profile')
   }
 
+  getUserId(){
+    const user: any = this.http.get<any>(this.URL)
+    return user._id
+  }
+
 }

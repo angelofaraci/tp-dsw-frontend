@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ReviewService } from '../services/review.service.js';
+import { UserService } from '../services/user.service.js';
+import { GameService } from '../services/game.service.js';
+
 
 @Component({
   selector: 'app-game-page',
@@ -17,6 +21,8 @@ export class GamePageComponent {
    
 }
 
+constructor(private userService: UserService, private gameService: GameService) {}
+
 calculateColorRating(number: number){
   if (number>=70) {
     return 'badge text-bg-success';
@@ -27,6 +33,19 @@ calculateColorRating(number: number){
 
  reviews = []
 
+ review = {
+  rating: '',
+  body: '',
+  spoiler_check: '',
+  state: '',
+  gameId: '',
+  userId: ''
 
+}
+
+async postReview(){
+  this.review.userId = await this.userService.getUserId()
+  this.review.gameId = await this.gameService.getGameId()
+}
  
 }

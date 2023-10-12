@@ -20,7 +20,7 @@
     <div class="row justify-content-md-center">
         <img src="{{ this.gameData.cover }}" class="img-fluid box"> 
     </div>
-    <div class="row justify-content-md-center" style="background-color: bisque;">
+    <div class="row justify-content-md-center">
         <div class="content">
                 <h1 style="display:flex; align-content: center;">{{ this.gameData.title }}</h1>
                 <div style=" align-content: center;" class="">
@@ -36,5 +36,18 @@
             </div>     
         </div>
     </div>
+    <div class="container mt-5">
+        <h2>Deja tu revisión</h2>
+        <div class="form-group">
+            <label for="rating">Puntuación (1-100):</label>
+            <input type="number" id="rating" class="form-control" min="1" max="100" [(ngModel)]="this.review.rating">
+          </div>
+          
+        <div class="form-group">
+          <label for="comment">Comentario:</label>
+          <textarea id="comment" class="form-control" [(ngModel)]="this.review.body"></textarea>
+        </div>
+        <button class="btn btn-primary">Enviar Revisión</button>
+      </div>
 </body>
     
