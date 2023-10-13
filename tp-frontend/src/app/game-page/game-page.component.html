@@ -22,13 +22,12 @@
     </div>
     <div class="row justify-content-md-center">
         <div class="content">
-                <h1 style="display:flex; align-content: center;">{{ this.gameData.title }}</h1>
+                <h1 style="display:flex; align-content: center;">{{ this.gameData.name }}</h1>
                 <div style=" align-content: center;" class="">
                     <p>
-                        The Legend of Zelda: Tears of the Kingdom es un videojuego de acción-
-                        aventura de 2023 de la serie The Legend of Zelda, desarrollado por la filial Nintendo 
-                        EPD en colaboración con Monolith Soft y publicado por Nintendo para la consola Nintendo Switch.
+                        {{ this.gameData.description }}
                     </p>
+                 
                     <span class="{{ calculateColorRating(this.gameData.rating) }}" style="font-size: 25px; " >{{ this.gameData.rating }}</span>
                 </div>
             <div *ngFor="let review of reviews">
@@ -36,18 +35,53 @@
             </div>     
         </div>
     </div>
-    <div class="container mt-5">
-        <h2>Deja tu revisión</h2>
+
+
+
+    <div class="container mt-5 form border">
+        <form  (ngSubmit)="postReview()" >
+        <h2>Deja tu review</h2>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">  <p>Quiere que la review sea privada?</p></div>
+              <div class="col-sm-2">
+                <label class="switch">
+                  <input type="checkbox" name="private" [(ngModel)]="this.review.private" (change)="toggleSwitchPrivate()" >
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+                <div class="col-sm-3">  <p>La review contiene spoilers?</p></div>
+              <div class="col-sm-2">
+                <label class="switch">
+                  <input type="checkbox" name="spoiler" [(ngModel)]="this.review.spoiler_check" (change)="toggleSwitchSpoiler()" >
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+
+        
         <div class="form-group">
             <label for="rating">Puntuación (1-100):</label>
-            <input type="number" id="rating" class="form-control" min="1" max="100" [(ngModel)]="this.review.rating">
-          </div>
+            <input type="number" id="rating" class="form-control" name="rating" min="1" max="100"
+            [(ngModel)]="this.review.rating" [ngClass]="{'is-invalid': invalid_rating}">
+        </div>
           
         <div class="form-group">
           <label for="comment">Comentario:</label>
-          <textarea id="comment" class="form-control" [(ngModel)]="this.review.body"></textarea>
+          <textarea id="comment" class="form-control" name="body" [(ngModel)]="this.review.body" [ngClass]="{'is-invalid': invalid_body}"></textarea>
         </div>
-        <button class="btn btn-primary">Enviar Revisión</button>
-      </div>
+
+        <button class="btn btn-primary" type="submit">Enviar Review</button>
+    </form>
+    </div>
 </body>
     

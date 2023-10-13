@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 })
 export class ReviewService {
 
-private URL = 'http://localhost:3000/api/review'
+private URL = 'http://localhost:3000/api/reviews'
 
 
 constructor(private http: HttpClient, private router: Router) { }
 
 addReview(review: any){
-
+  console.log(review)
   return this.http.post<any>(this.URL + '/', review)
 }
 

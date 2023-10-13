@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
+import { map } from 'rxjs';
 
 
 @Injectable({
@@ -12,12 +13,14 @@ export class UserService {
   private URL = 'http://localhost:3000/api/user'
 
   getUserData(){
+    
     return  this.http.get<any>(this.URL + '/profile')
+    
   }
 
-  getUserId(){
-    const user: any = this.http.get<any>(this.URL)
-    return user._id
+  
+   
+   
   }
 
-}
+

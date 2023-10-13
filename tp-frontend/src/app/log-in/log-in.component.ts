@@ -23,7 +23,6 @@ export class LogInComponent {
     this.authService.logIn(this.user)
       .subscribe(
         res => {
-          console.log(res)
           localStorage.setItem('token', res.token)
           this.router.navigate(['/home'])
         },
