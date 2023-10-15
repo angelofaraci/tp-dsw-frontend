@@ -14,18 +14,24 @@ private URL = 'http://localhost:3000/api/reviews'
 constructor(private http: HttpClient, private router: Router) { }
 
 addReview(review: any){
-  console.log(review)
   return this.http.post<any>(this.URL + '/', review)
 }
 
 checkIfReviewed(userId: any, gameId: any){
 
-  console.log('Esto es en el servicio review', userId, ' ', gameId)
+  
   const body = {
     userId,
     gameId
   }
   return this.http.post<any>(this.URL + '/check', body)
+}
+
+findAllForGame(gameId: any){
+  const body = {
+    gameId
+  }
+  return this.http.post<any>(this.URL + '/getreviews', body)
 }
 
 }

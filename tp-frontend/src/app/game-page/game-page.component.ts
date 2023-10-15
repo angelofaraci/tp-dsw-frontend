@@ -24,7 +24,7 @@ userData: any = {
 
 }
 
-reviews = []
+reviews: any = []
 
  review: any = {
   rating: null,
@@ -38,6 +38,10 @@ reviews = []
 
 reviewed: boolean = false
 
+
+usuario: string = 'Juan123';
+rating: number = 46;
+resena: string = 'Esta es una reseña increíble del juego. Me encantó la jugabilidad y los gráficos, y la historia es realmente cautivadora. Sin duda, recomiendo este juego a todos los amantes de los videojuegos.';
 
 
  async ngOnInit(): Promise<void> {
@@ -63,7 +67,17 @@ reviewed: boolean = false
                     .subscribe(
                       res => {
                         this.reviewed = res.isReviewed
-                        console.log(this.reviewed)
+                        this.reviewService.findAllForGame(this.gameData._id)
+                        .pipe(
+                          catchError((err: any) => {return err} )
+                        )
+                        .subscribe(
+                          res => {
+                            console.log(this.reviews)
+                            this.reviews = this.reviews.concat(res)
+                            console.log(this.reviews)
+                          }
+                        )
                       }
                     )
             }

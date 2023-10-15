@@ -5,7 +5,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReviewsComponent } from './reviews/reviews.component';
 import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -20,7 +19,6 @@ import { GamePageComponent } from './game-page/game-page.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ReviewsComponent,
     HomeComponent,
     SignInComponent,
     LogInComponent,

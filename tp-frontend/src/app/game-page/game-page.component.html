@@ -22,6 +22,21 @@
     </div>
 
 
+ <div *ngFor="let review of reviews">
+    <div class="container mt-4">
+      <div class="card">
+        <div class="card-header">
+          <h4>Reseña de un juego</h4>
+        </div>
+        <div class="card-body">
+          <p><strong>Nombre de Usuario:</strong> {{ this.review.userId.username }}</p>
+          <p><strong>Rating:</strong> {{ this.review.rating }}/5</p>
+          <p><strong>Reseña:</strong> {{ this.review.body }}</p>
+        </div>
+      </div>
+    </div>
+  </div> 
+    
 
     <div class="container mt-5 form border" *ngIf="!reviewed">
         <form  (ngSubmit)="postReview()" >
