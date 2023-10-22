@@ -73,9 +73,14 @@ resena: string = 'Esta es una reseña increíble del juego. Me encantó la jugab
                         )
                         .subscribe(
                           res => {
-                            console.log(this.reviews)
                             this.reviews = this.reviews.concat(res)
-                            console.log(this.reviews)
+                            this.gameService.getGameData(3).pipe(
+                              catchError((err: any) => {return err} )
+                            )
+                            .subscribe(
+                              res =>{
+                                this.gameData = res.data   
+                              })
                           }
                         )
                       }
@@ -125,12 +130,13 @@ toggleSwitchPrivate(){
 }
  postReview(){
 
-  if ((!this.review.body) || (!this.review.rating))  {
-
+  if ((!this.review.body) || (!this.review.rating) || (this.review.rating >100))  {
+    if( this.review.rating > 100 ) { this.invalid_rating = true }
     if(!this.review.body ) { this.invalid_body = true}
     if(!this.review.rating ) { this.invalid_rating = true }
-    if((this.review.rating ) && (!this.review.body )){ this.invalid_rating = false }
-    if((!this.review.rating ) && (this.review.body )){ this.invalid_body = false }
+    if(((this.review.rating ) && (this.review.rating <= 100)) && (!this.review.body ) ){ this.invalid_rating = false }
+    if(((!this.review.rating ) || (this.review.rating>100)) && (this.review.body )){ this.invalid_body = false }
+  
   } 
   
   else {
@@ -139,11 +145,13 @@ toggleSwitchPrivate(){
     this.review.gameId = this.gameData._id
     this.review.userId = this.userData._id
     this.reviewService.addReview(this.review)
+    
     .pipe(
       catchError((err: any) => {return err} )
     )
     .subscribe(
       res => {
+        window.location.reload()
         console.log(res)
       }
     )
