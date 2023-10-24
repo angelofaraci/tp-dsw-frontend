@@ -47,7 +47,8 @@ resena: string = 'Esta es una reseña increíble del juego. Me encantó la jugab
  async ngOnInit(): Promise<void> {
   try{
 
-    await this.gameService.getGameData(3).pipe(
+    await this.gameService.getGameData(3)
+    .pipe(
       catchError((err: any) => {return err} )
     )
     .subscribe(

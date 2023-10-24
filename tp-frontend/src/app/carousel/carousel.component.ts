@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent {
-  
-  featuredReviews = [
+export class CarouselComponent implements OnInit {
+ 
+  constructor(private gameService: GameService){
+
+  }
+
+  featuredReviews: any = [
     {
-     title: 'The Legend Of Zelda',
-     img: 'https://media.vandal.net/i/1440x1080/5-2023/2023591016846_1.jpg',
-     rating: 83,
+
     },
     {
      title: 'Mario',
@@ -32,5 +36,21 @@ export class CarouselComponent {
       return 'badge text-bg-secondary';
     } else return 'badge text-bg-danger'
    }
+  async ngOnInit(): Promise<void> {
+    try{
+      await this.gameService.getGameData(3)
+      .pipe(
+        catchError((err: any) => {return err} )
+      )
+      .subscribe(
+        res => {
+          this.featuredReviews[0] = res.data
+        }
+      )
+    }catch(error){
+      console.log(error)
+    } 
+
+  }      
 
 }
