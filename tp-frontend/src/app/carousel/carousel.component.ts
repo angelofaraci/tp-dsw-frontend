@@ -18,14 +18,14 @@ export class CarouselComponent implements OnInit {
 
     },
     {
-     title: 'Mario',
-     img: 'https://media.vandal.net/ivandal/11/60/1146x600/5/5-2023/2023522338074_1.jpg',
-     rating: 35,
+     title: 'Super Mario Odyssey',
+     img: 'https://i0.wp.com/losreyesdelmando.com/wp-content/uploads/2017/11/super-mario-odyssey-1.jpg?fit=1920%2C1080&ssl=1',
+     rating: 65,
     },
     {
-     title: 'Sonic',
-     img: 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2020/02/sonic-pelicula-1862103.jpg?tf=3840x',
-     rating: 65,
+     title: 'Sonic Superstars',
+     img: 'https://sonicsuperstars.com/img/hero/herobg_1920.jpg',
+     rating: 35,
     },
    ];
 
