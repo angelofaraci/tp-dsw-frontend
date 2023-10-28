@@ -12,8 +12,12 @@
                     <p>
                         {{ this.gameData.description }}
                     </p>
+
+                    <div class="text-center mb-3">
+                      <span class="{{ calculateColorRating(this.gameData.rating) }} ml-20" style="font-size: 25px" >{{ this.gameData.rating }}</span>
+
+                    </div>
                  
-                    <span class="{{ calculateColorRating(this.gameData.rating) }}" style="font-size: 25px; " >{{ this.gameData.rating }}</span>
                 </div>
             <div *ngFor="let review of reviews">
 
@@ -26,10 +30,10 @@
     <div class="container mt-4">
       <div class="card">
         <div class="card-header">
-          <h4>Reseña de un juego</h4>
+          <h4>{{ this.review.userId.username }}</h4>
         </div>
         <div class="card-body">
-          <p><strong>Nombre de Usuario:</strong> {{ this.review.userId.username }}</p>
+        <!--   <p><strong>Nombre de Usuario:</strong> {{ this.review.userId.username }}</p> -->
           <p><strong>Rating:</strong> {{ this.review.rating }}</p>
           <p><strong>Reseña:</strong> {{ this.review.body }}</p>
         </div>

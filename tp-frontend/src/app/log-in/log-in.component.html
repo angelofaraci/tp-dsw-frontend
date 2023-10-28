@@ -12,7 +12,10 @@
             <label for="password"  class="form-label">Password</label>
             <input type="password" class="form-control" id="contraseña" name="password" [(ngModel)]="this.user.password" placeholder="Enter your password" >
           </div>
-          <button type="submit" class="btn btn-primary btn-block mi-4 mt-2">Sign In</button>
+          <div>
+            <button type="submit" class="btn btn-primary btn-block mi-4 mt-2 mb-3">Sign In</button>
+          </div> 
+          <a routerLink="/signup">Not registered yet? Sign Up.</a>
         </form>
         
     </div>

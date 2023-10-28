@@ -39,9 +39,6 @@ reviews: any = []
 reviewed: boolean = false
 
 
-usuario: string = 'Juan123';
-rating: number = 46;
-resena: string = 'Esta es una reseña increíble del juego. Me encantó la jugabilidad y los gráficos, y la historia es realmente cautivadora. Sin duda, recomiendo este juego a todos los amantes de los videojuegos.';
 
 
  async ngOnInit(): Promise<void> {

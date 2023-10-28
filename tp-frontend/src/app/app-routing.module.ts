@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'myprofile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'signup', component: SignInComponent},
   { path: 'home', component: HomeComponent },
-  { path: 'reviewexample', component: GamePageComponent },
+  { path: 'reviewexample', component: GamePageComponent, canActivate: [AuthGuard] },
   { path: 'leveling', component: GamePageComponent },
   { path: '**',  redirectTo: '/home', pathMatch: 'full'}
 ];
