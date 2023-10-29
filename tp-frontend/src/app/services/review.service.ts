@@ -34,4 +34,10 @@ findAllForGame(gameId: any){
   return this.http.post<any>(this.URL + '/getreviews', body)
 }
 
+deleteReview(reviewId: any){
+  
+  console.log(reviewId)
+  return this.http.delete(this.URL + '/' + reviewId)
+}
+
 }

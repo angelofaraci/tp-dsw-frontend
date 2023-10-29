@@ -36,7 +36,19 @@ reviews: any = []
 
 }
 
-
+deleteReview(review: any){
+  this.reviewService.deleteReview(review._id)
+  .pipe(
+    catchError((err: any) => {return err} )
+  )
+  .subscribe(
+    res => {
+      window.location.reload()
+      console.log(res)
+    }
+  )
+  //window.location.reload()
+}
 
 reviewed: boolean = false
 
