@@ -21,6 +21,6 @@ export class AdminLogInComponent {
     this.adminService.logIn(this.admin).pipe(
       catchError((err: any) => {return err} )
     )
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/leveling'])
   }
 }
