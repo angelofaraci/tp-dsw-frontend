@@ -11,7 +11,7 @@ import { Observable, catchError } from 'rxjs';
   templateUrl: './game-page.component.html',
   styleUrls: ['./game-page.component.scss']
 })
-export class GamePageComponent implements OnInit, AfterViewInit {
+export class GamePageComponent implements OnInit{
 
 constructor(private userService: UserService, private gameService: GameService, private reviewService: ReviewService) {}
 
@@ -36,9 +36,13 @@ reviews: any = []
 
 }
 
+
+
 reviewed: boolean = false
 
 
+
+isFromCurrentUser: boolean = false;
 
 
  async ngOnInit(): Promise<void> {
@@ -72,12 +76,15 @@ reviewed: boolean = false
                         .subscribe(
                           res => {
                             this.reviews = this.reviews.concat(res)
+                            console.log(this.reviews)
+                            
                             this.gameService.getGameData(3).pipe(
                               catchError((err: any) => {return err} )
                             )
                             .subscribe(
                               res =>{
-                                this.gameData = res.data   
+                                this.gameData = res.data  
+                                
                               })
                           }
                         )
@@ -97,11 +104,7 @@ reviewed: boolean = false
   } 
 }
 
-ngAfterViewInit(): void {
-  
-}
 
- 
 
 
 
