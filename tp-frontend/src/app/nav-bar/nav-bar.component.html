@@ -7,10 +7,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav" >
-          <a class="nav-link"  routerLink="/login" *ngIf="!authService.loggedIn()">Log In</a>
-          <a class="nav-link" routerLink="/signup" *ngIf="!authService.loggedIn()">Sign Up</a>
+          <a class="nav-link"  routerLink="/login" *ngIf="!authService.loggedIn() && !adminAuthService.loggedIn()">Log In</a>
+          <a class="nav-link" routerLink="/signup" *ngIf="!authService.loggedIn() && !adminAuthService.loggedIn()">Sign Up</a>
           <a class="nav-link button" style="cursor: pointer;" (click)="authService.logOut()" *ngIf="authService.loggedIn()">Sign Out</a>
+          <a class="nav-link button" style="cursor: pointer;" (click)="adminAuthService.logOut()" *ngIf="adminAuthService.loggedIn()">Sign Out</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/myprofile" *ngIf="authService.loggedIn()">USUARIO</a>
+          <a class="nav-link" style="cursor: pointer;" routerLink="/leveling" *ngIf="adminAuthService.loggedIn()">Level Users</a>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdminService } from '../services/admin.service';
+import { AdminAuthService } from '../services/admin.auth.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { catchError } from 'rxjs';
 })
 export class AdminLogInComponent {
 
-  constructor(private adminService: AdminService, private router: Router){  }
+  constructor(private authService: AdminAuthService, private router: Router){  }
 
   admin= {
     email:'',
@@ -18,9 +18,17 @@ export class AdminLogInComponent {
   }
 
   logIn(){
-    this.adminService.logIn(this.admin).pipe(
-      catchError((err: any) => {return err} )
-    )
-      this.router.navigate(['/leveling'])
+    this.authService.logIn(this.admin)
+      .subscribe(
+        res => {
+          localStorage.setItem('admin_token', res.token)
+          this.router.navigate(['/home'])
+        },
+        err => {
+          console.log(err);
+          
+        }
+      )
+    
   }
 }
