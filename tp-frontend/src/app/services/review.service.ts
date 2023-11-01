@@ -39,4 +39,14 @@ deleteReview(reviewId: any){
   return this.http.delete(this.URL + '/' + reviewId)
 }
 
+editReview(review: any, userId: any){
+  const body = {
+    review: review,
+    userId: userId
+  }
+  console.log('llega')
+  return this.http.put<any>(this.URL + '/' + review._id, body)
+}
+
+
 }
