@@ -22,6 +22,11 @@ export class UserService {
     return this.http.put<any>(this.URL + '/update', user)
   }
 
+  deleteUser(id: any){
+    console.log(id)
+
+    return this.http.delete<any>(this.URL + '/' + id)
+  }
   
    
    

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { catchError } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,9 +12,8 @@ import { catchError } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 
-  user = {
-    username: 'Username',
-    email: 'Email'
+  user: any = {
+   
   }
 
   game ={
@@ -22,7 +23,7 @@ export class ProfileComponent implements OnInit {
   state:boolean = false;
   invalid_username:boolean = false;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
   }
 
 
@@ -59,7 +60,8 @@ export class ProfileComponent implements OnInit {
       this.invalid_username = true;
     }
     else{
-      this.userService.changeUsername(this.user).pipe(
+      this.userService.changeUsername(this.user)
+      .pipe(
         catchError((err: any) => {this.invalid_username = true;return err} )
       )
       .subscribe(
@@ -71,6 +73,18 @@ export class ProfileComponent implements OnInit {
       
   }
   
+ async deleteUser(){
+    await this.userService.deleteUser(this.user._id)
+    .pipe(
+      catchError((err: any) => {return err} )
+    )
+    .subscribe(
+      res => {
+        this.authService.logOut()
+        this.router.navigate(['/home'])
+        console.log(res)
+      })
+  }
 
 
 }

@@ -36,7 +36,6 @@ findAllForGame(gameId: any){
 
 deleteReview(reviewId: any){
   
-  console.log(reviewId)
   return this.http.delete(this.URL + '/' + reviewId)
 }
 

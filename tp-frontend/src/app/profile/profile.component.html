@@ -4,27 +4,12 @@
     <title>Profile</title>
 </head>
 <app-nav-bar></app-nav-bar>
-<style>
-html {
-   margin: 0px;
-   height: 1080px;
-   width: 100%;;
-    }
-
-body {
-   margin: 0px;
-   min-height: 100%;
-   width: 100%;
-   background:linear-gradient(0deg, white, rgb(240, 240, 240));
-   font-family: Verdana, Tahoma, Geneva, sans-serif;
-    }
-</style>
 <body>
    <!-- Informacion del usuario -->
 <div class="container">
     <div class="row justify-content-between" style="position: relative; padding-top: 15px;">
         <div class=" col-2 "><button class="btn btn-primary" *ngIf="!state" type="button" (click)="state=!state"> Edit </button></div>    
-        <div class=" col-2 "><button class="btn btn-danger"  type="button" > Delete User </button>  </div>
+        <div class=" col-2 "><button class="btn btn-danger"  type="button" (click)="deleteUser()" > Delete User </button>  </div>
     </div>
 </div>
     <div class="container" style="padding-top: 15px;">
