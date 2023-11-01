@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { catchError } from 'rxjs';
 
 
 @Component({
@@ -17,7 +18,10 @@ export class ProfileComponent implements OnInit {
   game ={
     score: 30,
   }
-  
+
+  state:boolean = false;
+  invalid_username:boolean = false;
+
   constructor(private userService: UserService) {
   }
 
@@ -48,6 +52,23 @@ export class ProfileComponent implements OnInit {
       document.documentElement.style.setProperty('--color2', color2);
         
 
+  }
+
+  editUsername() {
+    if(!this.user.username){
+      this.invalid_username = true;
+    }
+    else{
+      this.userService.changeUsername(this.user).pipe(
+        catchError((err: any) => {this.invalid_username = true;return err} )
+      )
+      .subscribe(
+        res => {
+          window.location.reload()
+        }
+      )
+    }
+      
   }
   
 

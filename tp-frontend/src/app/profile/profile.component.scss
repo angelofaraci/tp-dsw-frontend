@@ -1,3 +1,10 @@
+.useroptions{
+    display: flex;
+    flex-flow: row;
+    justify-content: right;
+    text-shadow: 2px 2px 10px rgba(134, 134, 134, 0.2);
+}
+
 .reviewsTitle{
     display: flex;
     flex-flow: row;

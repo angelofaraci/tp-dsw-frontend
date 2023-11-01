@@ -18,6 +18,10 @@ export class UserService {
     
   }
 
+  changeUsername(user:any){
+    return this.http.put<any>(this.URL + '/update', user)
+  }
+
   
    
    
