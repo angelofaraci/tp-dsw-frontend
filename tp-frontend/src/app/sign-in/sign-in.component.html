@@ -20,6 +20,9 @@
           <div>
             <button type="submit" class="btn btn-primary btn-block mi-4 mt-2 mb-3">Confirm Registration</button>
           </div>
+          <div *ngIf="error">
+            <p class="alert alert-danger" role="alert">E-Mail already registered</p>
+          </div>
           <a routerLink="/login">Already registered? Log In.</a>
         </form>
         

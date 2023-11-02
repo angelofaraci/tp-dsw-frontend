@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class SignInComponent {
     username: ''
   };
 
+error: boolean = false;
   
   constructor(private router: Router, private authService: AuthService){
 
@@ -23,14 +25,17 @@ export class SignInComponent {
   
   signUp(){
     this.authService.signUp(this.user)
+    .pipe(
+      catchError((err: any) => {
+        console.error(err);
+        this.error = true
+        return err} )
+    )
       .subscribe(
         res => {
           console.log(res)
           localStorage.setItem('token', res.token)
           this.router.navigate(['/home'])
-        },
-        err => {
-          console.log(err)
         }
       )
 }
