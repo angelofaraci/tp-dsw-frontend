@@ -191,7 +191,7 @@ editMode:boolean = false
         this.invalid_rating = false
         this.review.gameId = this.gameData._id
         this.review.userId = this.userData._id
-        this.reviewService.editReview(this.review, this.userData._id)
+        this.reviewService.editReview(this.review, this.userData._id, this.gameData._id)
         
         .pipe(
           catchError((err: any) => {return err} )

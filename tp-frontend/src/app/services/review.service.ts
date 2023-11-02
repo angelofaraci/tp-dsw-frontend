@@ -39,12 +39,12 @@ deleteReview(reviewId: any){
   return this.http.delete(this.URL + '/' + reviewId)
 }
 
-editReview(review: any, userId: any){
+editReview(review: any, userId: any, gameId: any){
   const body = {
     review: review,
-    userId: userId
+    userId: userId,
+    gameId: gameId
   }
-  console.log('llega')
   return this.http.put<any>(this.URL + '/' + review._id, body)
 }
 
