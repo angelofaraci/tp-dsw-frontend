@@ -30,7 +30,6 @@ reviews: any = []
   rating: null,
   body: null,
   spoiler_check: false,
-  private: false,
   gameId: '',
   userId: ''
 
@@ -136,11 +135,10 @@ invalid_body:boolean = false
 
 toggleSwitchSpoiler(){
   this.review.spoiler_check = !this.review.spoiler_check
+  console.log(this.review)
 }
 
-toggleSwitchPrivate(){
-  this.review.private = !this.review.private
-}
+
  postReview(){
 
   if ((!this.review.body) || (!this.review.rating) || (this.review.rating >100))  {
@@ -157,6 +155,7 @@ toggleSwitchPrivate(){
     this.invalid_rating = false
     this.review.gameId = this.gameData._id
     this.review.userId = this.userData._id
+    
     this.reviewService.addReview(this.review)
     
     .pipe(
