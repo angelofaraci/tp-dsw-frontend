@@ -1,0 +1,45 @@
+<!-- Barra de navegacion -->
+<app-nav-bar></app-nav-bar>
+
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Create a game</h1>
+        <form>
+            <div class="mb-3">
+            <label for="GameName" class="form-label">Game name</label>
+            <input type="Name" placeholder="Enter the name of the game" class="form-control" id="GameName">
+            </div>
+            <div class="mb-3">
+            <label for="GameDescription" class="form-label">Game description</label>
+            <textarea type="Description" placeholder="Enter the description of the game" class="form-control" id="GameDescription"></textarea>
+            </div>
+            <div class="mb-3">
+            <label for="GameCover" class="form-label">Game Cover</label>
+            <input type="Cover" placeholder="Enter a link to the game cover" class="form-control" id="GameCover">
+            </div>
+            <label for="GameReleaseDate" class="form-label">Game Release Date</label>
+            <div class="row g-3">
+                <div class="col-sm">
+                    <p>Day: </p>
+                    <select class="form-select" aria-label="Default select example" id="days">
+                        <option value="">Select a day</option>
+                    </select>
+                      
+                </div>
+                <div class="col-sm">
+                    <p>Month: </p>
+                    <select class="form-select" aria-label="Default select example" id="months">
+                        <option value="">Select a month</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <p>Year: </p>
+                    <input type="Year" placeholder="Select a Year" class="form-control" id="GameYear">
+                </div>
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    
+</body>

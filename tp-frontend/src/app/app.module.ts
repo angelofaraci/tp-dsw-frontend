@@ -17,6 +17,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { GamePageComponent } from './game-page/game-page.component';
 import { AdminLogInComponent } from './admin-log-in/admin-log-in.component';
 import { LevelingComponent } from './leveling/leveling.component';
+import { GameCreationComponent } from './game-creation/game-creation.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LevelingComponent } from './leveling/leveling.component';
     ProfileComponent,
     GamePageComponent,
     AdminLogInComponent,
-    LevelingComponent
+    LevelingComponent,
+    GameCreationComponent
   ],
   imports: [
     BrowserModule,

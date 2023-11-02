@@ -33,7 +33,7 @@
           <h4>
             {{ this.review.userId.username }}
           </h4> 
-            <div class="position-absolute top-0 end-0" *ngIf="review.userId.username === userData.username">
+            <div class="position-absolute top-0 end-0" *ngIf="(review.userId.username === userData.username)">
               <button class="btn btn-primary btn-sm" (click)="editMode = !editMode">Edit</button>
               <button class="btn btn-danger btn-sm" 
              (click)="deleteReview(review)">Delete</button>

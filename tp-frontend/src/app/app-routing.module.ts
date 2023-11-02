@@ -9,6 +9,7 @@ import { AdminAuthGuard } from 'src/admin.auth.guard';
 import { GamePageComponent } from './game-page/game-page.component';
 import { AdminLogInComponent } from './admin-log-in/admin-log-in.component';
 import { LevelingComponent } from './leveling/leveling.component';
+import { GameCreationComponent } from './game-creation/game-creation.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'reviewexample', component: GamePageComponent, canActivate: [AuthGuard] },
   { path: 'leveling', component: LevelingComponent, canActivate:[AdminAuthGuard]},
+  { path: 'creategame', component: GameCreationComponent, canActivate:[AdminAuthGuard]},
   { path: '**',  redirectTo: '/home', pathMatch: 'full'}
 ];
 

@@ -3,6 +3,8 @@ import { ReviewService } from '../services/review.service';
 import { UserService } from '../services/user.service';
 import { GameService } from '../services/game.service';
 import { Observable, catchError } from 'rxjs';
+import { AdminAuthService } from '../services/admin.auth.service';
+import { AdminService } from '../services/admin.service.js';
 
 
 
@@ -34,6 +36,7 @@ reviews: any = []
   userId: ''
 
 }
+
 
 deleteReview(review: any){
   this.reviewService.deleteReview(review._id)
