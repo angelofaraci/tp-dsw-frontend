@@ -1,11 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
+import { catchError } from 'rxjs';
+
 @Component({
   selector: 'app-game-creation',
   templateUrl: './game-creation.component.html',
   styleUrls: ['./game-creation.component.scss']
 })
-export class GameCreationComponent {
+export class GameCreationComponent implements OnInit {
+
+
+  constructor(private gameService: GameService){}
+
+game: any = {
+  name: '',
+  description: '',
+  cover: '',
+  release_date: '',
+  rating: 1
+}
+
+
+
 months = ["","January","February","March","April","May","June","July","August","September","October","November","December"]
+
+
+day = ''
+month = ''
+year = ''
 
   async ngOnInit(): Promise<void>{
     const selectDays = document.getElementById('days');
@@ -26,6 +48,21 @@ months = ["","January","February","March","April","May","June","July","August","
     }
 
   }
+
+createGame(){
+  this.game.release_date = (this.year + '-' + this.month + '-' + this.day)
+  console.log(this.game)
+  this.gameService.createGame(this.game)
+  .pipe(
+    catchError((err: any) => {return err} )
+  )
+  .subscribe(
+    res => {
+      window.location.reload()
+      console.log(res)
+    }
+  )
+}
 
   
 }

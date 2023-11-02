@@ -22,5 +22,9 @@ getGameId(){
   return game._id
 }
 
+createGame(game: any){
+  return this.http.post<any>(this.URL + '/', game)
+}
+
 
 }

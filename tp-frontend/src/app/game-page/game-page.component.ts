@@ -28,7 +28,7 @@ userData: any = {
 
 reviews: any = []
 
- review: any = {
+review: any = {
   rating: null,
   body: null,
   spoiler_check: false,
