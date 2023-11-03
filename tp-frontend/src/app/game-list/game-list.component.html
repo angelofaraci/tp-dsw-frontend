@@ -1,35 +1,37 @@
 <app-nav-bar></app-nav-bar>
 
 <body>
-    <div class="container" style="padding-top: 2%;" *ngFor="let game of games; let i = index">
+    <div class="container" style="padding-top: 2%;display: block;" >
         <h1 style="text-align: center;">List of Games</h1>
         <hr>
-        <ul class="list-group list-group-horizontal" style="padding-top: 1%;">
-            <li class="list-group-item gameScore" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
-                <h1>{{game.rating}}</h1>
-                
-            </li>
-            <li class="list-group-item gameScore" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
-                <img src="{{game.cover}}" style="height: 200px; width: 200px;" alt="Image">
-            </li>
-            <li class="list-group-item ">
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h3 class="mb-1">{{game.name}}</h3>
-                            <div class="position-absolute top-0 end-0" >
-                                <button class="btn btn-primary btn-sm" (click)="index=i; editMode=!editMode">Edit</button>
-                                <button class="btn btn-danger btn-sm" (click)="deleteGame(game._id)">Delete</button>
-                            </div>
-                        </div>
+        <div>
+            <ul class="list-group list-group-horizontal" style="padding-top: 1%; " *ngFor="let game of games; let i = index">
+                <li class="list-group-item gameScore" style="width: 200px; background-color: lightgrey;">
+                    <h1>{{game.rating}}</h1>    
+                </li>
+                <li class="list-group-item gameScore" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+                    <img src="{{game.cover}}" style="height: 200px; width: 200px;" alt="Image">
+                </li>
+                <li class="list-group-item w-100" >
                         <div>
-                            <p class="mb-1">{{game.description}}</p>
+                            <div class="d-flex w-100 justify-content-between">
+                                <h3 class="mb-1">{{game.name}}</h3>
+                                
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                                <p class="mb-1">{{game.description}}</p>
+                            </div>
+                            
+                            <small style="font-style: italic; position:absolute; bottom: 5px; right: 10px;">Released: {{game.release_date}}</small> 
                         </div>
-                        <small style="font-style: italic; display: flex; justify-content: end;">Released: {{game.release_date}}</small> 
-                    </div>
-            </li>
-        </ul>
-
-        
+                        
+                </li>
+                <div class="d-grid mx-auto" style="display: flex; margin-bottom: 0px;" >
+                    <button class="btn btn-primary btn-sm" style="margin-left: 5px; margin-bottom: 1px;" (click)="index=i; editMode=!editMode">Edit</button>
+                    <button class="btn btn-danger btn-sm" style="margin-left: 5px;" (click)="deleteGame(game._id)">Delete</button>
+                </div>
+            </ul>  
+        </div>    
     </div>
 
 
@@ -57,6 +59,7 @@
             </div>
    
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            <button type="submit" class="btn btn-danger mt-3" (click)="editMode=!editMode">Cancel</button>
         </form>
         
     </div>

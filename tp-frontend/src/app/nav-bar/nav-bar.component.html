@@ -12,7 +12,6 @@
           <a class="nav-link button" style="cursor: pointer;" (click)="authService.logOut()" *ngIf="authService.loggedIn()">Sign Out</a>
           <a class="nav-link button" style="cursor: pointer;" (click)="adminAuthService.logOut()" *ngIf="adminAuthService.loggedIn()">Sign Out</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/myprofile" *ngIf="authService.loggedIn()">USUARIO</a>
-          <a class="nav-link" style="cursor: pointer;" routerLink="/leveling" *ngIf="adminAuthService.loggedIn()">Level Users</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/creategame" *ngIf="adminAuthService.loggedIn()">Create Game</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/listgames" *ngIf="adminAuthService.loggedIn()">Game list</a>
         </div>

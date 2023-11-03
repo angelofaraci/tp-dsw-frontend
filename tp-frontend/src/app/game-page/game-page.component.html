@@ -19,9 +19,7 @@
                     </div>
                  
                 </div>
-            <div *ngFor="let review of reviews">
-
-            </div>     
+             
         </div>
     </div>
 
@@ -33,24 +31,16 @@
           <h4>
             {{ this.review.userId.username }}
           </h4> 
-            <div class="position-absolute top-0 end-0" *ngIf="review.userId.username === userData.username">
-              <button class="btn btn-primary btn-sm" (click)="editMode = !editMode">Edit</button>
-              <button class="btn btn-danger btn-sm" 
-             (click)="deleteReview(review)">Delete</button>
-            </div>
-            
-  
+          <div class="position-absolute top-0 end-0" *ngIf="review.userId.username === userData.username">
+            <button class="btn btn-primary btn-sm" (click)="editMode = !editMode">Edit</button>
+            <button class="btn btn-danger btn-sm"  (click)="deleteReview(review)">Delete</button>
+          </div>
         </div>
-      
-        
         <div class="card-body">
           <p><strong>Rating:</strong> {{ this.review.rating }}</p>
-
-          <div *ngIf="review.spoiler_check">
-
+            <div *ngIf="review.spoiler_check">
             <h6  (click)="review.spoiler_check = !review.spoiler_check" 
             style="cursor: pointer; text-decoration: underline;">[SPOILER] Ver review</h6>
-
           </div>
           <div *ngIf="!review.spoiler_check">
             <p><strong>Reseña:</strong> {{ this.review.body }}</p>

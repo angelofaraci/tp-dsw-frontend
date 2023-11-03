@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { catchError } from 'rxjs';
+import { catchError, pipe } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -28,15 +28,12 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(){
-    this.userService.getUserData()
+    this.userService.getUserData().pipe(catchError((err: any) => {
+      return err} ))
       .subscribe(
         res =>{
           this.user = res.userData
           console.log(this.user)         
-        },
-        err => {
-          console.log(err);
-          
         }
       )
       let color1=String(0)

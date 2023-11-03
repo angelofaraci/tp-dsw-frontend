@@ -6,25 +6,20 @@
 <app-nav-bar></app-nav-bar>
 <body>
    <!-- Informacion del usuario -->
-<div class="container">
-    <div class="row justify-content-between" style="position: relative; padding-top: 15px;">
-        <div class=" col-2 "><button class="btn btn-primary" *ngIf="!state" type="button" (click)="state=!state"> Edit </button></div>    
-        <div class=" col-2 "><button class="btn btn-danger"  type="button" (click)="deleteUser()" > Delete User </button>  </div>
-    </div>
-</div>
     <div class="container" style="padding-top: 15px;">
         <div class="row justify-content-between" style="position: relative;">
-            <div class="col-2 reviewsTitle userLevelAndScore">
+            <div class="col-4 reviewsTitle userLevelAndScore" *ngIf="!state">
                 <h2 style="position:relative; margin: 2%;">
-                    Level: 3
+                    Level: {{this.user.level}}
                 </h2>
             </div>
-            <div class="col-5 reviewsTitle">
+            <div class="col-4" *ngIf="state"></div>
+            <div class="col-4 reviewsTitle">
                 
                  <h1 *ngIf="!state">
                     {{ this.user.username }}
                  </h1>
-                 <form (ngSubmit)="editUsername()" *ngIf="state" >
+                 <form (ngSubmit)="editUsername()" *ngIf="state" style="min-width: 300px;">
                     <div class="input-group form-group">
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Change your Username here"
@@ -36,21 +31,24 @@
                     </div>
                 </form>
                              
-            </div> 
-            <div class="col-2 reviewsTitle userLevelAndScore">
+            </div>
+            <div class="col-4" *ngIf="state"></div> 
+            <div class="col-4 reviewsTitle userLevelAndScore" *ngIf="!state">
                 <h2 style="position:relative; margin: 2%;">
-                    Score: 230
+                    Score: {{this.user.score}}
                 </h2>
             </div>
         </div>
-    </div>
-    <div class="row justify-content-md-center" style="position: relative; padding-top: 13px;">
-        <div class="reviewsTitle">
-            <hr style="margin-left: 150px">
-            <h3> My Reviews </h3>
-            <hr style="margin-right: 150px">    
+        <div class="row justify-content-between" style="position: relative; padding-top: 15px;">
+            <div class="col-4" style="text-align: center; max-width: 200px;"><button class="btn btn-primary" style="width: 100%;" *ngIf="!state" type="button" (click)="state=!state"> Edit </button></div>  
+            <div class="col-4" style="text-align: center; max-width: 200px;"><button class="btn btn-danger"  style="width: 100%;" *ngIf="!state" type="button" (click)="deleteUser()" > Delete User </button></div>
         </div>
+        <hr>
+        <h3 style="padding-top: 15px;">My Reviews</h3>
+        <hr>
+
     </div>
+    
     <div class="container" style="padding-top: 2%;">
         <ul class="list-group list-group-horizontal" style="padding-top: 1%;">
             <li class="list-group-item gameScore" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
