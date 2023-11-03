@@ -1,0 +1,33 @@
+<app-nav-bar></app-nav-bar>
+
+<body>
+    <div class="container" style="padding-top: 2%;" *ngFor="let game of games">
+        <h1 style="text-align: center;">List of Games</h1>
+        <hr>
+        <ul class="list-group list-group-horizontal" style="padding-top: 1%;">
+            <li class="list-group-item gameScore" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+                <h1>{{game.rating}}</h1>
+                
+            </li>
+            <li class="list-group-item gameScore" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+                <img src="{{game.cover}}" style="height: 200px; width: 200px;" alt="Image">
+            </li>
+            <li class="list-group-item ">
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h3 class="mb-1">{{game.name}}</h3>
+                            <div class="position-absolute top-0 end-0" >
+                                <button class="btn btn-primary btn-sm" >Edit</button>
+                                <button class="btn btn-danger btn-sm" (click)="deleteGame(game._id)">Delete</button>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mb-1">{{game.description}}</p>
+                        </div>
+                        <small style="font-style: italic; display: flex; justify-content: end;">Released: {{game.release_date}}</small> 
+                    </div>
+            </li>
+        </ul>
+        
+    </div>
+</body>

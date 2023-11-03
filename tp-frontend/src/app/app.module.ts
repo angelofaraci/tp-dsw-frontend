@@ -18,6 +18,7 @@ import { GamePageComponent } from './game-page/game-page.component';
 import { AdminLogInComponent } from './admin-log-in/admin-log-in.component';
 import { LevelingComponent } from './leveling/leveling.component';
 import { GameCreationComponent } from './game-creation/game-creation.component';
+import { GameListComponent } from './game-list/game-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GameCreationComponent } from './game-creation/game-creation.component';
     GamePageComponent,
     AdminLogInComponent,
     LevelingComponent,
-    GameCreationComponent
+    GameCreationComponent,
+    GameListComponent
   ],
   imports: [
     BrowserModule,

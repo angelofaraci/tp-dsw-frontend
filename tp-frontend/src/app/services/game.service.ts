@@ -17,6 +17,10 @@ getGameData(id: number){
   return this.http.get<any>(this.URL + `/${id}`)
 }
 
+getGames(){
+  return this.http.get<any>(this.URL + '/')
+}
+
 getGameId(){
   const game: any = this.http.get<any>(this.URL)
   return game._id
@@ -26,5 +30,9 @@ createGame(game: any){
   return this.http.post<any>(this.URL + '/', game)
 }
 
+deleteGame(id: any){
+  console.log(id)
+  return this.http.delete<any>(this.URL + '/' + id)
+}
 
 }
