@@ -17,7 +17,6 @@ game: any = {
   description: '',
   cover: '',
   release_date: '',
-  rating: 1
 }
 
 
@@ -31,17 +30,16 @@ year = ''
 
   async ngOnInit(): Promise<void>{
     const selectDays = document.getElementById('days');
-    const selectMonths = document.getElementById('months');
-                      
+    const selectMonths = document.getElementById('months');                     
     for (let i = 1; i <= 31; i++) {
-      var option = document.createElement('option');
+      let option = document.createElement('option');
       option.value = i.toString();
       option.text = i.toString();
       if(selectDays) {selectDays.appendChild(option) }
     }
 
-    for (var i = 1; i <= 12; i++) {
-      var option = document.createElement('option');
+    for (let i = 1; i <= 12; i++) {
+      let option = document.createElement('option');
       option.value = i.toString();
       option.text = this.months[i]
       if(selectMonths) {selectMonths.appendChild(option) }

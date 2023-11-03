@@ -31,8 +31,12 @@ createGame(game: any){
 }
 
 deleteGame(id: any){
-  console.log(id)
   return this.http.delete<any>(this.URL + '/' + id)
+}
+
+updateGame(game:any, id:any){
+  console.log(game, '    ', id)
+  return this.http.put(this.URL + '/' + id, game)
 }
 
 }
