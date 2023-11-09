@@ -22,7 +22,7 @@ editMode: boolean = false
     description: '',
     cover: '',
     release_date: '',
-    rating: 1
+    rating: 0
   }
 
   months = ["","January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -54,21 +54,24 @@ addElements(){
           if(selectMonths) {selectMonths.appendChild(option) }
         }
 }
+invalid_name:boolean = false;
+invalid_description:boolean = false;
 
-  async editGame(){
-  this.game.release_date = this.games[this.index].release_date
-  await this.gameService.updateGame(this.game, this.games[this.index]._id)
-  .pipe(
-    catchError((err: any) => {return err} )
-  )
-  .subscribe(res =>{
-    console.log(res)
-    window.location.reload()})
-
-   
- 
-  }
-
+async editGame(){
+this.invalid_name = !!!this.game.name;
+this.invalid_description= !!!this.game.description;
+let validation = !!(this.game.name && this.game.description)
+if(validation){
+this.game.release_date = this.games[this.index].release_date
+await this.gameService.updateGame(this.game, this.games[this.index]._id)
+.pipe(
+  catchError((err: any) => {return err} )
+)
+.subscribe(res =>{
+  console.log(res)
+  window.location.reload()})
+}
+}
 
 
 
@@ -81,13 +84,7 @@ addElements(){
         for(let i=0; i< this.games.length; i++){
           this.arrayBooleans.push(false);
         }
-        console.log(this.games)})
-
-
-        
-  
-        
-    
+        console.log(this.games)})  
   }
 
   async deleteGame(id:any){

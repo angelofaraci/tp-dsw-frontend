@@ -41,15 +41,17 @@
             <h1>Editing {{this.games[this.index].name}}</h1>
             <div class="mb-3 form-group">
             <label for="GameName" class="form-label">Game name</label>
-            <input  placeholder="Enter the name of the game" 
-            [(ngModel)]="this.game.name" name="name" class="form-control"  id="GameName">
+            <input  placeholder="Enter the name of the game"
+            [(ngModel)]="this.game.name" name="name" class="form-control"  id="GameName"
+            [ngClass]="{'is-invalid': invalid_name}">
             </div>
     
             <div class="mb-3 form-group">
             <label for="GameDescription" class="form-label">Game description</label>
             <textarea  [(ngModel)]="this.game.description" 
             placeholder="Enter the description of the game"
-            name="description" class="form-control" id="GameDescription"></textarea>
+            name="description" class="form-control" id="GameDescription"
+            [ngClass]="{'is-invalid': invalid_description}"></textarea>
             </div>
     
             <div class="mb-3 form-group">

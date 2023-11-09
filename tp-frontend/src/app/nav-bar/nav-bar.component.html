@@ -5,7 +5,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content: space-between;">
         <div class="navbar-nav" >
           <a class="nav-link"  routerLink="/login" *ngIf="!authService.loggedIn() && !adminAuthService.loggedIn()">Log In</a>
           <a class="nav-link" routerLink="/signup" *ngIf="!authService.loggedIn() && !adminAuthService.loggedIn()">Sign Up</a>
@@ -14,6 +14,9 @@
           <a class="nav-link" style="cursor: pointer;" routerLink="/myprofile" *ngIf="authService.loggedIn()">USUARIO</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/creategame" *ngIf="adminAuthService.loggedIn()">Create Game</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/listgames" *ngIf="adminAuthService.loggedIn()">Game list</a>
+        </div>
+        <div class="navbar-nav" >
+          <a class="nav-link" style="padding-right: 0%;" routerLink="/loginAdmin" *ngIf="!authService.loggedIn() && !adminAuthService.loggedIn()">Admin</a>
         </div>
       </div>
     </div>

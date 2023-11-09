@@ -13,10 +13,11 @@ export class GameCreationComponent implements OnInit {
   constructor(private gameService: GameService){}
 
 game: any = {
-  name: '',
-  description: '',
+  name: null,
+  description: null,
   cover: '',
-  release_date: '',
+  release_date: null,
+  rating : 0
 }
 
 
@@ -24,9 +25,9 @@ game: any = {
 months = ["","January","February","March","April","May","June","July","August","September","October","November","December"]
 
 
-day = ''
-month = ''
-year = ''
+day = null;
+month = null;
+year = null;
 
   async ngOnInit(): Promise<void>{
     const selectDays = document.getElementById('days');
@@ -46,10 +47,23 @@ year = ''
     }
 
   }
+  invalid_name:boolean = false;
+  invalid_description:boolean = false;
+  invalid_day:boolean = false;
+  invalid_month:boolean = false;
+  invalid_year:boolean = false;
+
+  
 
 createGame(){
+  this.invalid_name = !!!this.game.name;
+  this.invalid_description= !!!this.game.description;
+  this.invalid_day = !!!this.day;
+  this.invalid_month = !!!this.month;
+  this.invalid_year = !!!this.year;
+  let validation = !!(this.game.name && this.game.description && this.day && this.month && this.year)
+  if (validation){
   this.game.release_date = (this.year + '-' + this.month + '-' + this.day)
-  console.log(this.game)
   this.gameService.createGame(this.game)
   .pipe(
     catchError((err: any) => {return err} )
@@ -61,6 +75,5 @@ createGame(){
     }
   )
 }
-
-  
+} 
 }
