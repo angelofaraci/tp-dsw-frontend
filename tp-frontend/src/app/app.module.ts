@@ -19,6 +19,7 @@ import { AdminLogInComponent } from './admin-log-in/admin-log-in.component';
 import { LevelingComponent } from './leveling/leveling.component';
 import { GameCreationComponent } from './game-creation/game-creation.component';
 import { GameListComponent } from './game-list/game-list.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { GameListComponent } from './game-list/game-list.component';
     AdminLogInComponent,
     LevelingComponent,
     GameCreationComponent,
-    GameListComponent
+    GameListComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
