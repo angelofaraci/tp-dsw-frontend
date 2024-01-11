@@ -1,22 +1,42 @@
-import { Injectable } from '@angular/core'; 
-import { CanActivate, Router } from '@angular/router';
+// import { Injectable } from '@angular/core'; 
+// import { CanActivate, Router } from '@angular/router';
+// import { AdminAuthService } from './app/services/admin.auth.service';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+
+// export class AdminAuthGuard implements CanActivate {
+
+//   constructor(private authService: AdminAuthService, private router: Router) { }
+
+//   canActivate(): boolean {
+//     if (this.authService.loggedIn()) {
+//       return true;
+//     }
+
+//     this.router.navigate(['/home']);
+//     return false;
+//   }
+
+// }
+
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
 import { AdminAuthService } from './app/services/admin.auth.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+export const AdminAuthGuard: CanActivateFn = (route, state) => {
 
-export class AdminAuthGuard implements CanActivate {
+  const authService = inject(AdminAuthService)
 
-  constructor(private authService: AdminAuthService, private router: Router) { }
+  const router = inject(Router)
 
-  canActivate(): boolean {
-    if (this.authService.loggedIn()) {
-      return true;
-    }
-
-    this.router.navigate(['/home']);
+  if (authService.loggedIn()){
+    return true
+  }else {
+    router.navigate(['/home']);
     return false;
   }
 
-}
+};
+
