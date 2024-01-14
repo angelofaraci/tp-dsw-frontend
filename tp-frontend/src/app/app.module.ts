@@ -44,7 +44,7 @@ import { ReviewComponent } from './review/review.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthGuard , { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

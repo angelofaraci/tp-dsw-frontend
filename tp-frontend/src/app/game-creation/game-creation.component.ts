@@ -16,6 +16,7 @@ game: any = {
   name: null,
   description: null,
   cover: '',
+  banner: '',
   release_date: null,
   rating : 0
 }

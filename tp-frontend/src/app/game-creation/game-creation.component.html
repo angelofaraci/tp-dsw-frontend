@@ -2,54 +2,101 @@
 <app-nav-bar></app-nav-bar>
 
 <body>
-    <div class="container">
-        <h1 style="text-align: center;">Create a game</h1>
-        <form (ngSubmit)="createGame()">
+  <div class="container">
+    <h1 style="text-align: center">Create a game</h1>
+    <form (ngSubmit)="createGame()">
+      <div class="mb-3 form-group">
+        <label for="GameName" class="form-label">Game name</label>
+        <input
+          placeholder="Enter the name of the game"
+          [(ngModel)]="this.game.name"
+          name="name"
+          class="form-control"
+          id="GameName"
+          [ngClass]="{ 'is-invalid': invalid_name }"
+        />
+      </div>
 
-            <div class="mb-3 form-group">
-            <label for="GameName" class="form-label">Game name</label>
-            <input  placeholder="Enter the name of the game" 
-            [(ngModel)]="this.game.name" name="name" class="form-control"  id="GameName" [ngClass]="{'is-invalid': invalid_name}">
-            </div>
+      <div class="mb-3 form-group">
+        <label for="GameDescription" class="form-label">Game description</label>
+        <textarea
+          [(ngModel)]="this.game.description"
+          placeholder="Enter the description of the game"
+          name="description"
+          class="form-control"
+          id="GameDescription"
+          [ngClass]="{ 'is-invalid': invalid_description }"
+        ></textarea>
+      </div>
 
-            <div class="mb-3 form-group">
-            <label for="GameDescription" class="form-label">Game description</label>
-            <textarea  [(ngModel)]="this.game.description" 
-            placeholder="Enter the description of the game"
-            name="description" class="form-control" id="GameDescription"
-            [ngClass]="{'is-invalid': invalid_description}"></textarea>
-            </div>
+      <div class="mb-3 form-group">
+        <label for="GameCover" class="form-label">Game Cover</label>
+        <input
+          [(ngModel)]="this.game.cover"
+          name="cover"
+          placeholder="Enter a link to the game cover"
+          class="form-control"
+          id="GameCover"
+        />
+      </div>
 
-            <div class="mb-3 form-group">
+      <div class="mb-3 form-group">
+        <label for="GameCover" class="form-label">Game Banner</label>
+        <input
+          [(ngModel)]="this.game.banner"
+          name="banner"
+          placeholder="Enter a link to the game banner"
+          class="form-control"
+          id="GameBanner"
+        />
+      </div><div class="mb-3 form-group">
             <label for="GameCover" class="form-label">Game Cover</label>
             <input [(ngModel)]="this.game.cover" name="cover"
             placeholder="Enter a link to the game cover" class="form-control" id="GameCover">
             </div>
 
-            <label for="GameReleaseDate" class="form-label">Game Release Date</label>
-            <div class="row g-3 form-group">
-                <div class="col-sm">
-                    <p>Day: </p>
-                    <select class="form-select" [(ngModel)]="this.day" name="day" aria-label="Default select example" id="days"
-                    [ngClass]="{'is-invalid': invalid_day}">
-                        <option value="">Select a day</option>
-                    </select>
-                      
-                </div>
-                <div class="col-sm form-group">
-                    <p>Month: </p>
-                    <select class="form-select" [(ngModel)]="this.month" name="month" aria-label="Default select example" id="months"
-                    [ngClass]="{'is-invalid': invalid_month}">
-                        <option value="">Select a month</option>
-                    </select>
-                </div>
-                <div class="col-sm form-group">
-                    <p>Year: </p>
-                    <input type="Year" [(ngModel)]="this.year" name="year" placeholder="Enter a Year" class="form-control" id="GameYear"
-                    [ngClass]="{'is-invalid': invalid_year}">
-                </div>
-              </div>
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-        </form>
-    </div>   
+      <label for="GameReleaseDate" class="form-label">Game Release Date</label>
+      <div class="row g-3 form-group">
+        <div class="col-sm">
+          <p>Day:</p>
+          <select
+            class="form-select"
+            [(ngModel)]="this.day"
+            name="day"
+            aria-label="Default select example"
+            id="days"
+            [ngClass]="{ 'is-invalid': invalid_day }"
+          >
+            <option value="">Select a day</option>
+          </select>
+        </div>
+        <div class="col-sm form-group">
+          <p>Month:</p>
+          <select
+            class="form-select"
+            [(ngModel)]="this.month"
+            name="month"
+            aria-label="Default select example"
+            id="months"
+            [ngClass]="{ 'is-invalid': invalid_month }"
+          >
+            <option value="">Select a month</option>
+          </select>
+        </div>
+        <div class="col-sm form-group">
+          <p>Year:</p>
+          <input
+            type="Year"
+            [(ngModel)]="this.year"
+            name="year"
+            placeholder="Enter a Year"
+            class="form-control"
+            id="GameYear"
+            [ngClass]="{ 'is-invalid': invalid_year }"
+          />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  </div>
 </body>
