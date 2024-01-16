@@ -71,8 +71,8 @@ createGame(){
   )
   .subscribe(
     res => {
-      window.location.reload()
       console.log(res)
+      window.location.reload()
     }
   )
 }

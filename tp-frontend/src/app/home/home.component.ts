@@ -1,33 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+  
+  constructor(private gameService: GameService){
+
+  }
+  game: any = {
+    name: null,
+    description: null,
+    cover: '',
+    banner: '',
+    release_date: null,
+    rating : 0
+  }
+  lanzamientos = [this.game]
+  async ngOnInit(): Promise<void> {
+    try{
+      await this.gameService.getGamesDataByDate(4)
+      .pipe(
+        catchError((err: any) => {return err} )
+      )
+      .subscribe(
+        res => {
+          console.log(res.data)
+          this.lanzamientos = res.data
+        }
+      )
+    }catch(error){
+      console.log(error)
+    } 
+
+  }
   
 
-  lanzamientos = [
-    {
-      name: `Baldur's Gate 3`,
-      img: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Baldur%27s_Gate_3_cover_art.jpg/220px-Baldur%27s_Gate_3_cover_art.jpg',
-    },
-    {
-      name: 'Resident Evil 4',
-      img: 'https://image.api.playstation.com/vulcan/ap/rnd/202210/0712/Excr73ZmEiSIQT18r070yhX5.png',
-    },
-    {
-      name: 'Lies of P',
-      img: 'https://upload.wikimedia.org/wikipedia/en/d/de/Lies_of_p_cover_art.jpg',
-    },
-    {
-      name: 'Alan Wake 2',
-      img: 'https://cdn1.epicgames.com/offer/c4763f236d08423eb47b4c3008779c84/EGS_AlanWake2_RemedyEntertainment_S2_1200x1600-c7c8091ddac0f9669c8e5905bca88aaa',
-    },
-  ]
-
 }
+
+
 
   
 

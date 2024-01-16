@@ -15,11 +15,13 @@
         <hr>
         <div class="col-sm" *ngFor="let lanzamiento of lanzamientos">
             <div class="card" style="width: 18rem;">
-                <img src="{{lanzamiento.img}}" class="card-img-top" style="height: 330px;"  alt="...">
+              <img src="{{lanzamiento.cover}}" class="card-img-top" style="height: 330px;  object-fit:cover;"  alt="...">
             <div class="card-body">
             <h5 class="card-title">{{lanzamiento.name}}</h5>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus rerum laudantium, impedit cum veritatis nam.</p>
+            <hr>
+            <p class = "card-description">{{lanzamiento.description}}</p>
             <a href="#" class="btn btn-primary mt-2">Ver juego</a>
+            <span  class="badge text-bg-success mt-2">{{ lanzamiento.rating }}</span>
           </div>
   </div>
 </div>
