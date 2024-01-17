@@ -5,6 +5,7 @@ import { GameService } from '../services/game.service';
 import { Observable, catchError } from 'rxjs';
 import { AdminAuthService } from '../services/admin.auth.service';
 import { AdminService } from '../services/admin.service.js';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-page',
@@ -13,6 +14,8 @@ import { AdminService } from '../services/admin.service.js';
 })
 export class GamePageComponent implements OnInit {
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private userService: UserService,
     private gameService: GameService,
     private reviewService: ReviewService
@@ -34,14 +37,20 @@ export class GamePageComponent implements OnInit {
 
   reviewed: boolean = false;
 
+  idToSearch = 0;
+
   isFromCurrentUser: boolean = false;
 
   async ngOnInit(): Promise<void> {
     try {
+      this.route.params.subscribe((params) => {
+        this.idToSearch = +params['id'];
+      });
       await this.gameService
-        .getGameData(3)
+        .getGameData(this.idToSearch)
         .pipe(
           catchError((err: any) => {
+            this.router.navigate(['/home'])
             return err;
           })
         )
@@ -77,7 +86,7 @@ export class GamePageComponent implements OnInit {
                       console.log(this.reviews);
 
                       this.gameService
-                        .getGameData(3)
+                        .getGameData(this.idToSearch)
                         .pipe(
                           catchError((err: any) => {
                             return err;

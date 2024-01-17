@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'myprofile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'signup', component: SignInComponent},
   { path: 'home', component: HomeComponent },
-  { path: 'reviewexample', component: GamePageComponent, canActivate: [AuthGuard] },
+  { path: 'game/:id', component: GamePageComponent, canActivate: [AuthGuard] },
   { path: 'leveling', component: LevelingComponent, canActivate:[AdminAuthGuard]},
   { path: 'creategame', component: GameCreationComponent, canActivate:[AdminAuthGuard]},
   { path: 'listgames', component: GameListComponent, canActivate:[AdminAuthGuard]},

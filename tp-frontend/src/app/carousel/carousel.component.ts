@@ -38,7 +38,7 @@ export class CarouselComponent implements OnInit {
    }
   async ngOnInit(): Promise<void> {
     try{
-      await this.gameService.getGameData(3)
+      await this.gameService.getGameData(4)
       .pipe(
         catchError((err: any) => {return err} )
       )

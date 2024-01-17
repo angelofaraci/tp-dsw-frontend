@@ -5,8 +5,8 @@
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner" style="border-radius: 10px;">
-      <div class="carousel-item active" style="cursor: pointer;" routerLink="/reviewexample">
-        <img src="{{ featuredReviews[0].cover }}" class="d-block w-100" style="width: 200; height: 550px;" alt="...">
+      <div class="carousel-item active" style="cursor: pointer;" routerLink="/game/4">
+        <img src="{{ featuredReviews[0].banner }}" class="d-block w-100" style="width: 200; height: 550px;" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h1> <span class="{{ calculateColorRating(featuredReviews[0].rating) }}" >{{ featuredReviews[0].rating }}</span> </h1>
           <p class="h1 fw-bold" style="-webkit-text-stroke: 1px black;">{{ featuredReviews[0].name }}</p>
