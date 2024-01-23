@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   }
 
   game ={
-    score: 30,
+    score: 100,
   }
 
   state:boolean = false;
@@ -38,18 +38,20 @@ export class ProfileComponent implements OnInit {
       )
       let color1=String(0)
       let color2=String(0)
+      let color3=String(0)
       if(this.game.score >= 50){
-        color1=String((100-this.game.score)*2*2.55)
-        color2=String(255)
+        color1=String((100-this.game.score)*2*2.55);
+        color2=String(255);
+        color3 = String(this.game.score);
       }
       else{
-        color1=String(255)
-        color2=String(this.game.score*2*2.55)
+        color1=String(255);
+        color2=String(this.game.score*2*2.55);
+        color3 = String(this.game.score);
       }
       document.documentElement.style.setProperty('--color1', color1);
       document.documentElement.style.setProperty('--color2', color2);
-        
-
+      document.documentElement.style.setProperty('--color3', color3);
   }
 
   editUsername() {
