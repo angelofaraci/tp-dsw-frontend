@@ -20,6 +20,7 @@ import { LevelingComponent } from './leveling/leveling.component';
 import { GameCreationComponent } from './game-creation/game-creation.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { ReviewComponent } from './review/review.component';
+import { UserReviewComponent } from './user-review/user-review.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ReviewComponent } from './review/review.component';
     LevelingComponent,
     GameCreationComponent,
     GameListComponent,
-    ReviewComponent
+    ReviewComponent,
+    UserReviewComponent
   ],
   imports: [
     BrowserModule,

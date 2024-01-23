@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { ReviewService } from '../services/review.service';
+import { GameService } from '../services/game.service';
 import { catchError, pipe } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -13,17 +15,27 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   user: any = {
-   
-  }
 
-  game ={
-    score: 100,
-  }
+   }
+  reviews: any = [];
+
+  review: any = {
+    rating: null,
+    body: null,
+    spoiler_check: false,
+    gameId: '',
+    userId: '',
+  };
 
   state:boolean = false;
   invalid_username:boolean = false;
 
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private reviewService: ReviewService, 
+    private authService: AuthService,
+    private router: Router)
+     {
   }
 
 
@@ -33,25 +45,17 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         res =>{
           this.user = res.userData
-          console.log(this.user)         
+          console.log(this.user)
+          this.reviewService.findAllForUser(this.user._id).pipe(catchError((err: any) => {
+            return err} ))
+            .subscribe(
+              res =>{
+                this.reviews = this.reviews.concat(res)
+                console.log(this.reviews)         
+              }
+            )   
         }
       )
-      let color1=String(0)
-      let color2=String(0)
-      let color3=String(0)
-      if(this.game.score >= 50){
-        color1=String((100-this.game.score)*2*2.55);
-        color2=String(255);
-        color3 = String(this.game.score);
-      }
-      else{
-        color1=String(255);
-        color2=String(this.game.score*2*2.55);
-        color3 = String(this.game.score);
-      }
-      document.documentElement.style.setProperty('--color1', color1);
-      document.documentElement.style.setProperty('--color2', color2);
-      document.documentElement.style.setProperty('--color3', color3);
   }
 
   editUsername() {

@@ -31,7 +31,14 @@ findAllForGame(gameId: any){
   const body = {
     gameId
   }
-  return this.http.post<any>(this.URL + '/getreviews', body)
+  return this.http.post<any>(this.URL + '/getreviews/game', body)
+}
+
+findAllForUser(userId: any){
+  const body = {
+    userId
+  }
+  return this.http.post<any>(this.URL + '/getreviews/user', body)
 }
 
 deleteReview(reviewId: any){

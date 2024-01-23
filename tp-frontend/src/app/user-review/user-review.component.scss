@@ -1,0 +1,12 @@
+.gameScore{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    color: rgb(235, 235, 235);
+    background-color: rgb(var(--color1),var(--color2), var(--color3));
+}
+.gameScore h1{
+    padding: 0px 20px;
+    text-shadow: 2px 2px 10px rgb(60, 60, 60);
+}
