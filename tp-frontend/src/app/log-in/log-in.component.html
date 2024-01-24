@@ -1,28 +1,42 @@
 <app-nav-bar></app-nav-bar>
 
-<div class=" loginBox container  mt-4" >
-    <div class="row m-3">
-        <h2 class="text-center">Welcome back!</h2>
-        <form (submit)="logIn()">
-        <div class="mb-3 form-group">
-            <label for="correo-electronico" class="form-label mb-1">E-Mail</label>
-            <input type="text" class="form-control" id="correo-electronico" name="email" [(ngModel)]="this.user.email" placeholder="Enter your email" >
+<div class="loginBox container mt-4">
+  <div class="row m-3">
+    <h2 class="text-center">Welcome back!</h2>
+    <form (submit)="logIn()">
+      <div class="mb-3 form-group">
+        <label for="correo-electronico" class="form-label mb-1">E-Mail</label>
+        <input
+          type="text"
+          class="form-control"
+          id="correo-electronico"
+          name="email"
+          [(ngModel)]="this.user.email"
+          placeholder="Enter your email"
+        />
+      </div>
+      <div class="mb-3 form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="contraseña"
+          name="password"
+          [(ngModel)]="this.user.password"
+          placeholder="Enter your password"
+        />
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary btn-block mi-4 mt-2 mb-3">
+          Sign In
+        </button>
+        <div *ngIf="error">
+          <p class="alert alert-danger" role="alert">
+            Wrong E-Mail or Password
+          </p>
         </div>
-          <div class="mb-3 form-group">
-            <label for="password"  class="form-label">Password</label>
-            <input type="password" class="form-control" id="contraseña" name="password" [(ngModel)]="this.user.password" placeholder="Enter your password" >
-          </div>
-          <div>
-            <button type="submit" class="btn btn-primary btn-block mi-4 mt-2 mb-3">Sign In</button>
-          <div *ngIf="error">
-            <p class="alert alert-danger" role="alert">Wrong E-Mail or Password</p>
-          </div>
-          </div> 
-          <a routerLink="/signup">Not registered yet? Sign Up.</a>
-        </form>
-        
-    </div>
+      </div>
+      <a routerLink="/signup">Not registered yet? Sign Up.</a>
+    </form>
+  </div>
 </div>
-
-
-

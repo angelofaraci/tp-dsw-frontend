@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 
 
 
@@ -26,12 +26,14 @@ error: boolean = false;
     this.authService.logIn(this.user)
     .pipe(
       catchError((err: any) => {
-        console.error(err);
+        console.log('ENTRO POR EL ERROR')
+
         this.error = true
-        return err} )
+        return ''})
     )
       .subscribe(
         res => {
+          console.log('NO ENTRO POR EL ERROR')
           localStorage.setItem('token', res.token)
           this.router.navigate(['/home'])
         }
