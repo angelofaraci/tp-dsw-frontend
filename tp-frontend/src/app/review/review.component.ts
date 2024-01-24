@@ -19,7 +19,7 @@ export class ReviewComponent implements OnInit {
   review: any 
 
   @Input()
-  gameData: any
+  gameData: any 
 
   @Input()
   userData: any

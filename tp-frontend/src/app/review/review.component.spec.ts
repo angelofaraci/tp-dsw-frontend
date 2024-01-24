@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { ReviewComponent } from './review.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReviewService } from '../services/review.service';
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
@@ -8,14 +10,17 @@ describe('ReviewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ReviewComponent]
+      declarations: [ReviewComponent],
+      providers: [ReviewService],
+      imports: [HttpClientModule]
     });
     fixture = TestBed.createComponent(ReviewComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
+    component = fixture.componentInstance;
+
   });
 
-  it('should create', () => {
+  it('should create', fakeAsync(() => {
     expect(component).toBeTruthy();
-  });
+  }) );
 });

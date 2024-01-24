@@ -1,10 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReviewService } from '../services/review.service';
 import { UserService } from '../services/user.service';
 import { GameService } from '../services/game.service';
 import { Observable, catchError } from 'rxjs';
-import { AdminAuthService } from '../services/admin.auth.service';
-import { AdminService } from '../services/admin.service.js';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -50,7 +48,7 @@ export class GamePageComponent implements OnInit {
         .getGameData(this.idToSearch)
         .pipe(
           catchError((err: any) => {
-            this.router.navigate(['/home'])
+            this.router.navigate(['/home']);
             return err;
           })
         )
