@@ -5,11 +5,11 @@
     <h2 class="text-center">Welcome back!</h2>
     <form (submit)="logIn()">
       <div class="mb-3 form-group">
-        <label for="correo-electronico" class="form-label mb-1">E-Mail</label>
+        <label for="email" class="form-label mb-1">E-Mail</label>
         <input
           type="text"
           class="form-control"
-          id="correo-electronico"
+          id="email"
           name="email"
           [(ngModel)]="this.user.email"
           placeholder="Enter your email"
@@ -20,7 +20,7 @@
         <input
           type="password"
           class="form-control"
-          id="contraseña"
+          id="password"
           name="password"
           [(ngModel)]="this.user.password"
           placeholder="Enter your password"
