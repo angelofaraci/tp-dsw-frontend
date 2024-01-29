@@ -13,26 +13,8 @@
   <div class="row mt-5">
     <h1 class="mb-3">What people is talking about</h1>
     <hr />
-    <div class="col-sm" *ngFor="let lanzamiento of lanzamientos">
-      <div class="card" style="width: 18rem">
-        <img
-          src="{{ lanzamiento.cover }}"
-          class="card-img-top"
-          id="juego-{{lanzamiento.id}}"
-          routerLink="/game/{{ lanzamiento.id }}"
-          style="height: 330px; object-fit: cover; cursor: pointer"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ lanzamiento.name }}</h5>
-          <hr />
-          <p class="card-description">{{ lanzamiento.description }}</p>
-          <a href="#" class="btn btn-primary mt-2">Ver juego</a>
-          <span class="badge text-bg-success mt-2">{{
-            lanzamiento.rating
-          }}</span>
-        </div>
-      </div>
+    <div class="col-sm" *ngFor="let game of games; let i = index">
+      <app-card [game]="games[i]"></app-card>
     </div>
   </div>
 </div>
