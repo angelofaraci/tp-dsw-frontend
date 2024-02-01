@@ -4,6 +4,9 @@ import { UserService } from '../services/user.service';
 import { GameService } from '../services/game.service';
 import { Observable, catchError } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Game } from '../interfaces/game.interface';
+import { User } from '../interfaces/user.interface';
+import { Review } from '../interfaces/review.interface';
 
 @Component({
   selector: 'app-game-page',
@@ -19,15 +22,15 @@ export class GamePageComponent implements OnInit {
     private reviewService: ReviewService
   ) {}
 
-  gameData: any = {};
+  gameData: Game = {rating: 0};
 
-  userData: any = {};
+  userData: User = {};
 
-  reviews: any = [];
+  reviews: Review[] = [];
 
-  review: any = {
-    rating: null,
-    body: null,
+  review: Review = {
+    rating: 0,
+    body: '',
     spoiler_check: false,
     gameId: '',
     userId: '',
