@@ -1,10 +1,9 @@
 export interface Review {
     _id?: any,
-    id?: string,
     rating: number,
-    body?: string,
+    body: string,
     spoiler_check?: boolean,
     private?: boolean,
-    userId?: any,
-    gameId?: any
+    userId: any,
+    gameId: any
 }

@@ -22,9 +22,16 @@ export class GamePageComponent implements OnInit {
     private reviewService: ReviewService
   ) {}
 
-  gameData: Game = {rating: 0};
+  gameData: Game = {
+    rating: 0,
+    id: '',
+    name: '',
+    description: '',
+    cover: '',
+    banner: '',
+  };
 
-  userData: User = {};
+  userData: User = { id: '', username: '', password: '', email: '' };
 
   reviews: Review[] = [];
 
