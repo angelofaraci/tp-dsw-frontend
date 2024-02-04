@@ -1,84 +1,102 @@
-<div class="container" style="padding-top: 2%;">
-    <ul class="list-group list-group-horizontal" style="padding-top: 1%;">
-        <li class="list-group-item gameScore" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
-            <h1>{{this.review.rating}}</h1>
-        </li>
-        <li class="list-group-item " style="width: 100%;">
-            <div class="col">
-                <div class="d-flex w-100 justify-content-between">
-                    <h3 class="mb-1">{{ this.review.gameId.name }}</h3>
-                </div>
-                <div *ngIf="review.spoiler_check">
-                  <h6
-                    (click)="review.spoiler_check = !review.spoiler_check"
-                    style="cursor: pointer; text-decoration: underline"
-                  >
-                    [SPOILER] Ver review
-                  </h6>
-                </div>
-                <div *ngIf="!review.spoiler_check">
-                    <p class="mb-1">{{this.review.body}}</p>
-                </div>
-                <small style="font-style: italic; display: flex; justify-content: end;">Edited: 21/09/23</small> 
-            </div>
-        </li>
-        <div class="d-grid mx-auto" style="display: flex; margin-bottom: 0px;" *ngIf="review.userId.username === userData.username">
-          <button class="btn btn-primary btn-sm" style="margin-left: 5px; margin-bottom: 1px;" (click)="editMode=!editMode">Edit</button>
-          <button class="btn btn-danger btn-sm" style="margin-left: 5px;" (click)="deleteReview(review)">Delete</button>
+<div class="container" style="padding-top: 2%">
+  <ul class="list-group list-group-horizontal" style="padding-top: 1%">
+    <li
+      class="list-group-item gameScore"
+      style="border-top-right-radius: 0px; border-bottom-right-radius: 0px"
+    >
+      <h1>{{ this.review.rating }}</h1>
+    </li>
+    <li class="list-group-item" style="width: 100%">
+      <div class="col">
+        <div class="d-flex w-100 justify-content-between">
+          <h3 class="mb-1">{{ this.review.gameId.name }}</h3>
+        </div>
+        <div *ngIf="review.spoiler_check">
+          <h6
+            (click)="review.spoiler_check = !review.spoiler_check"
+            style="cursor: pointer; text-decoration: underline"
+          >
+            [SPOILER] See review
+          </h6>
+        </div>
+        <div *ngIf="!review.spoiler_check">
+          <p class="mb-1">{{ this.review.body }}</p>
+        </div>
+        <small style="font-style: italic; display: flex; justify-content: end"
+          >Edited: 21/09/23</small
+        >
       </div>
-    </ul>      
-  </div>
-  
-  
-  
-  <div class="container mt-5 form border" *ngIf="editMode">
-    <form (ngSubmit)="editReview()">
-      <h2>Edita tu review</h2>
-  
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2"><p>La review contiene spoilers?</p></div>
-          <div class="col-sm-2">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="miCheckbox"
-                [ngModel]="this.review.spoiler_check"
-                name="miCheckbox"
-                (ngModelChange)="toggleSwitchSpoiler()"
-              />
-            </div>
+    </li>
+    <div
+      class="d-grid mx-auto"
+      style="display: flex; margin-bottom: 0px"
+      *ngIf="review.userId.username === userData.username"
+    >
+      <button
+        class="btn btn-primary btn-sm"
+        style="margin-left: 5px; margin-bottom: 1px"
+        (click)="editMode = !editMode"
+      >
+        Edit
+      </button>
+      <button
+        class="btn btn-danger btn-sm"
+        style="margin-left: 5px"
+        (click)="deleteReview(review)"
+      >
+        Delete
+      </button>
+    </div>
+  </ul>
+</div>
+
+<div class="container mt-5 form border" *ngIf="editMode">
+  <form (ngSubmit)="editReview()">
+    <h2>Edit your review</h2>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2"><p>Does your review contain spoilers?</p></div>
+        <div class="col-sm-2">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="miCheckbox"
+              [ngModel]="this.review.spoiler_check"
+              name="miCheckbox"
+              (ngModelChange)="toggleSwitchSpoiler()"
+            />
           </div>
         </div>
       </div>
-  
-      <div class="form-group">
-        <label for="rating">Nueva Puntuación (1-100):</label>
-        <input
-          type="number"
-          id="rating"
-          class="form-control"
-          name="rating"
-          min="1"
-          max="100"
-          [(ngModel)]="this.review.rating"
-          [ngClass]="{ 'is-invalid': invalid_rating }"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="comment">Nuevo Comentario:</label>
-        <textarea
-          id="comment"
-          class="form-control"
-          name="body"
-          [(ngModel)]="this.review.body"
-          [ngClass]="{ 'is-invalid': invalid_body }"
-        ></textarea>
-      </div>
-  
-      <button class="btn btn-primary" type="submit">Editar Review</button>
-    </form>
-  </div>
-  
+    </div>
+
+    <div class="form-group">
+      <label for="rating">New Score (1-100):</label>
+      <input
+        type="number"
+        id="rating"
+        class="form-control"
+        name="rating"
+        min="1"
+        max="100"
+        [(ngModel)]="this.review.rating"
+        [ngClass]="{ 'is-invalid': invalid_rating }"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="comment">New Review:</label>
+      <textarea
+        id="comment"
+        class="form-control"
+        name="body"
+        [(ngModel)]="this.review.body"
+        [ngClass]="{ 'is-invalid': invalid_body }"
+      ></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Edit your review</button>
+  </form>
+</div>

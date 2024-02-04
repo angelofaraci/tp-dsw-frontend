@@ -1,0 +1,26 @@
+<div class="row justify-content-md-center">
+  <img src="{{ this.gameData.banner }}" class="img-fluid box" />
+</div>
+<div class="row justify-content-md-center">
+  <div class="content">
+    <h1 style="display: flex; align-content: center">
+      {{ this.gameData.name }}
+    </h1>
+    <div style="align-content: center" class="">
+      <p>
+        {{ this.gameData.description }}
+      </p>
+      <p style="font-weight: bold">
+        Fecha de lanzamiento:
+        {{ this.gameData.release_date?.substring(0, 10) }}
+      </p>
+      <div class="text-center mb-3">
+        <span
+          class="{{ calculateColorRating(this.gameData.rating) }} ml-20"
+          style="font-size: 25px"
+          >{{ this.gameData.rating }}</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

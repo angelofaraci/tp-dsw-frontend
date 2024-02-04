@@ -5,40 +5,34 @@ import { catchError } from 'rxjs';
 @Component({
   selector: 'app-user-review',
   templateUrl: './user-review.component.html',
-  styleUrls: ['./user-review.component.scss']
+  styleUrls: ['./user-review.component.scss'],
 })
 export class UserReviewComponent {
-
-
-  
-  constructor(private reviewService: ReviewService){}
+  constructor(private reviewService: ReviewService) {}
 
   @Input()
-  review: any 
-
+  review: any;
 
   @Input()
-  userData: any
+  userData: any;
 
   ngOnInit(): void {
-      let color1=String(0);
-      let color2=String(0);
-      let color3=String(0);
-      if(this.review.rating >= 50){
-        color1=String((100-this.review.rating)*2*2.55);
-        color2=String(255);
-        color3 = String((this.review.rating));
-      }
-      else{
-        color1=String(255)
-        color2=String(this.review.rating*2*2.55)
-        color3 = String(this.review.rating);
-      }
-      document.documentElement.style.setProperty('--color1', color1);
-      document.documentElement.style.setProperty('--color2', color2);
-      document.documentElement.style.setProperty('--color3', color3);
+    let color1 = String(0);
+    let color2 = String(0);
+    let color3 = String(0);
+    if (this.review.rating >= 50) {
+      color1 = String((100 - this.review.rating) * 2 * 2.55);
+      color2 = String(255);
+      color3 = String(this.review.rating);
+    } else {
+      color1 = String(255);
+      color2 = String(this.review.rating * 2 * 2.55);
+      color3 = String(this.review.rating);
+    }
+    document.documentElement.style.setProperty('--color1', color1);
+    document.documentElement.style.setProperty('--color2', color2);
+    document.documentElement.style.setProperty('--color3', color3);
   }
-  
 
   deleteReview(review: any) {
     this.reviewService
@@ -59,8 +53,6 @@ export class UserReviewComponent {
 
   isFromCurrentUser: boolean = false;
 
-  
-
   invalid_rating: boolean = false;
   invalid_body: boolean = false;
 
@@ -72,7 +64,7 @@ export class UserReviewComponent {
   editMode: boolean = false;
 
   editReview() {
-    const gameData = this.review.gameId
+    const gameData = this.review.gameId;
     if (!this.review.body || !this.review.rating || this.review.rating > 100) {
       if (this.review.rating > 100) {
         this.invalid_rating = true;

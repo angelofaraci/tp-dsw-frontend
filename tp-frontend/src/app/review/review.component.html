@@ -16,7 +16,7 @@
             (click)="review.spoiler_check = !review.spoiler_check"
             style="cursor: pointer; text-decoration: underline"
           >
-            [SPOILER] Ver review
+            [SPOILER] See review
           </h6>
         </div>
         <div *ngIf="!review.spoiler_check">
@@ -53,11 +53,11 @@
 
 <div class="container mt-5 form border" *ngIf="editMode">
   <form (ngSubmit)="editReview()">
-    <h2>Edita tu review</h2>
+    <h2>Edit your review</h2>
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-2"><p>La review contiene spoilers?</p></div>
+        <div class="col-sm-2"><p>Does your review contain spoilers?</p></div>
         <div class="col-sm-2">
           <div class="form-check">
             <input
@@ -74,7 +74,7 @@
     </div>
 
     <div class="form-group">
-      <label for="rating">Nueva Puntuación (1-100):</label>
+      <label for="rating">New Rating (1-100):</label>
       <input
         type="number"
         id="rating"
@@ -88,7 +88,7 @@
     </div>
 
     <div class="form-group">
-      <label for="comment">Nuevo Comentario:</label>
+      <label for="comment">New Review:</label>
       <textarea
         id="comment"
         class="form-control"
@@ -98,6 +98,6 @@
       ></textarea>
     </div>
 
-    <button class="btn btn-primary" type="submit">Editar Review</button>
+    <button class="btn btn-primary" type="submit">Edit Review</button>
   </form>
 </div>
