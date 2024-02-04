@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Game } from '../interfaces/game.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ getGameId(){
   return game._id
 }
 
-createGame(game: any){
+createGame(game: Game){
   return this.http.post<any>(this.URL + '/', game)
 }
 

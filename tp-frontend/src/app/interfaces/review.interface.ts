@@ -5,5 +5,7 @@ export interface Review {
     spoiler_check?: boolean,
     private?: boolean,
     userId: any,
-    gameId: any
+    gameId: any,
+    createdAt?: Date,
+    updatedAt?: Date
 }

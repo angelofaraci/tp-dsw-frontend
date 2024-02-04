@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { map } from 'rxjs';
+import { User } from '../interfaces/user.interface';
 
 
 @Injectable({
@@ -18,12 +19,11 @@ export class UserService {
     
   }
 
-  changeUsername(user:any){
+  changeUsername(user:User){
     return this.http.put<any>(this.URL + '/update', user)
   }
 
-  deleteUser(id: any){
-    console.log(id)
+  deleteUser(id: string){
 
     return this.http.delete<any>(this.URL + '/' + id)
   }
