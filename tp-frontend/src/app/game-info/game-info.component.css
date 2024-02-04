@@ -1,0 +1,27 @@
+.box{
+    max-height: 540px;
+    max-width: 1840px;
+    object-fit:cover;
+}
+.content{
+    max-width: 1200px; 
+    background-color: aliceblue;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    box-shadow: 1px 1px 10px black;
+}
+
+html {
+    margin: 0px;
+    height: 1080px;
+    width: 100%;;
+     }
+ 
+ body {
+    margin: 0px;
+    min-height: 100%;
+    width: 100%;
+    background:linear-gradient(0deg, white, rgb(240, 240, 240));
+    font-family: Verdana, Tahoma, Geneva, sans-serif;
+     }

@@ -34,6 +34,7 @@
     >
       <button
         class="btn btn-primary btn-sm"
+        id="editButton"
         style="margin-left: 5px; margin-bottom: 1px"
         (click)="editMode = !editMode"
       >
@@ -52,52 +53,9 @@
 </div>
 
 <div class="container mt-5 form border" *ngIf="editMode">
-  <form (ngSubmit)="editReview()">
-    <h2>Edit your review</h2>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-2"><p>Does your review contain spoilers?</p></div>
-        <div class="col-sm-2">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="miCheckbox"
-              [ngModel]="this.review.spoiler_check"
-              name="miCheckbox"
-              (ngModelChange)="toggleSwitchSpoiler()"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="rating">New Rating (1-100):</label>
-      <input
-        type="number"
-        id="rating"
-        class="form-control"
-        name="rating"
-        min="1"
-        max="100"
-        [(ngModel)]="this.review.rating"
-        [ngClass]="{ 'is-invalid': invalid_rating }"
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="comment">New Review:</label>
-      <textarea
-        id="comment"
-        class="form-control"
-        name="body"
-        [(ngModel)]="this.review.body"
-        [ngClass]="{ 'is-invalid': invalid_body }"
-      ></textarea>
-    </div>
-
-    <button class="btn btn-primary" type="submit">Edit Review</button>
-  </form>
+  <app-review-form
+    [gameId]="this.gameData._id"
+    [userId]="this.userData._id"
+    [isThisEdit]="true"
+  ></app-review-form>
 </div>

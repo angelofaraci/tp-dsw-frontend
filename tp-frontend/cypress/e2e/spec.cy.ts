@@ -54,8 +54,23 @@ describe('Post and delete a review', () => {
     cy.get('#comment').type('this is a test');
     cy.contains('h3', 'test').should('not.exist');
     cy.get('#submit-review').click();
-    cy.wait(1000)
+    cy.wait(1000);
     cy.contains('h3', 'test').should('exist');
+  });
+
+  it('Should edit a review', () => {
+    cy.contains('a', 'Log In').click();
+    cy.get('#email').type('test@test');
+    cy.get('#password').type('passwordtest');
+    cy.contains('button', 'Sign In').click();
+    cy.get('#juego-3').click();
+    cy.get('#editButton').click();
+    cy.get('#rating').type('55');
+    cy.get('#comment').type('this is an edit');
+    cy.get('#edit-review').click();
+    cy.wait(1000);
+    cy.contains('h3', 'test').should('exist');
+    cy.contains('p', 'this is an edit').should('exist');
   });
 
   it('Should delete a review', () => {
@@ -65,10 +80,8 @@ describe('Post and delete a review', () => {
     cy.contains('button', 'Sign In').click();
     cy.get('#juego-3').click();
     cy.contains('h3', 'test').should('exist');
-    cy.get('#deleteButton').click()
-    cy.wait(1000)
+    cy.get('#deleteButton').click();
+    cy.wait(1000);
     cy.contains('h3', 'test').should('not.exist');
   });
-
- 
 });

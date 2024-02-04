@@ -22,6 +22,7 @@ import { GameListComponent } from './game-list/game-list.component';
 import { ReviewComponent } from './review/review.component';
 import { UserReviewComponent } from './user-review/user-review.component';
 import { GameInfoComponent } from './game-info/game-info.component';
+import { ReviewFormComponent } from './review-form/review-form.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { GameInfoComponent } from './game-info/game-info.component';
     ReviewComponent,
     UserReviewComponent,
     GameInfoComponent,
+    ReviewFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

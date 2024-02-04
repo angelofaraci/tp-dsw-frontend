@@ -1,48 +1,57 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ReviewService } from '../services/review.service';
 import { catchError } from 'rxjs';
+import { Game } from '../interfaces/game.interface';
+import { Review } from '../interfaces/review.interface';
+import { User } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
-  styleUrls: ['./review.component.scss']
+  styleUrls: ['./review.component.scss'],
 })
-
-
-
 export class ReviewComponent implements OnInit {
-
-  
-    constructor(private reviewService: ReviewService){}
+  constructor(private reviewService: ReviewService) {}
 
   @Input()
-  review: any 
+  review: Review = {
+    rating: 0,
+    body: '',
+    spoiler_check: false,
+    gameId: '',
+    userId: '',
+  };
 
   @Input()
-  gameData: any 
+  gameData: Game = {
+    rating: 0,
+    id: '',
+    name: '',
+    description: '',
+    cover: '',
+    banner: '',
+  };
 
   @Input()
-  userData: any
+  userData: User = { id: '', username: '', password: '', email: '' };
 
   ngOnInit(): void {
-      let color1=String(0);
-      let color2=String(0);
-      let color3=String(0);
-      if(this.gameData.rating >= 50){
-        color1=String((100-this.gameData.rating)*2*2.55);
-        color2=String(255);
-        color3 = String((this.gameData.rating));
-      }
-      else{
-        color1=String(255)
-        color2=String(this.gameData.rating*2*2.55)
-        color3 = String(this.gameData.rating);
-      }
-      document.documentElement.style.setProperty('--color1', color1);
-      document.documentElement.style.setProperty('--color2', color2);
-      document.documentElement.style.setProperty('--color3', color3);
+    let color1 = String(0);
+    let color2 = String(0);
+    let color3 = String(0);
+    if (this.gameData.rating >= 50) {
+      color1 = String((100 - this.gameData.rating) * 2 * 2.55);
+      color2 = String(255);
+      color3 = String(this.gameData.rating);
+    } else {
+      color1 = String(255);
+      color2 = String(this.gameData.rating * 2 * 2.55);
+      color3 = String(this.gameData.rating);
+    }
+    document.documentElement.style.setProperty('--color1', color1);
+    document.documentElement.style.setProperty('--color2', color2);
+    document.documentElement.style.setProperty('--color3', color3);
   }
-  
 
   deleteReview(review: any) {
     this.reviewService
@@ -59,111 +68,11 @@ export class ReviewComponent implements OnInit {
     //window.location.reload()
   }
 
-  reviewed: boolean = false;
+ 
 
-  isFromCurrentUser: boolean = false;
 
-  
-
-  invalid_rating: boolean = false;
-  invalid_body: boolean = false;
-
-  toggleSwitchSpoiler() {
-    this.review.spoiler_check = !this.review.spoiler_check;
-    console.log(this.review);
-  }
-
-  postReview() {
-    if (!this.review.body || !this.review.rating || this.review.rating > 100) {
-      if (this.review.rating > 100) {
-        this.invalid_rating = true;
-      }
-      if (!this.review.body) {
-        this.invalid_body = true;
-      }
-      if (!this.review.rating) {
-        this.invalid_rating = true;
-      }
-      if (
-        this.review.rating &&
-        this.review.rating <= 100 &&
-        !this.review.body
-      ) {
-        this.invalid_rating = false;
-      }
-      if (
-        (!this.review.rating || this.review.rating > 100) &&
-        this.review.body
-      ) {
-        this.invalid_body = false;
-      }
-    } else {
-      this.invalid_body = false;
-      this.invalid_rating = false;
-      this.review.gameId = this.gameData._id;
-      this.review.userId = this.userData._id;
-
-      this.reviewService
-        .addReview(this.review)
-
-        .pipe(
-          catchError((err: any) => {
-            return err;
-          })
-        )
-        .subscribe((res) => {
-          window.location.reload();
-          console.log(res);
-        });
-    }
-  }
 
   editMode: boolean = false;
 
-  editReview() {
-    if (!this.review.body || !this.review.rating || this.review.rating > 100) {
-      if (this.review.rating > 100) {
-        this.invalid_rating = true;
-      }
-      if (!this.review.body) {
-        this.invalid_body = true;
-      }
-      if (!this.review.rating) {
-        this.invalid_rating = true;
-      }
-      if (
-        this.review.rating &&
-        this.review.rating <= 100 &&
-        !this.review.body
-      ) {
-        this.invalid_rating = false;
-      }
-      if (
-        (!this.review.rating || this.review.rating > 100) &&
-        this.review.body
-      ) {
-        this.invalid_body = false;
-      }
-    } else {
-      this.invalid_body = false;
-      this.invalid_rating = false;
-      this.review.gameId = this.gameData._id;
-      this.review.userId = this.userData._id;
-      this.reviewService
-        .editReview(this.review, this.userData._id, this.gameData._id)
-
-        .pipe(
-          catchError((err: any) => {
-            return err;
-          })
-        )
-        .subscribe((res) => {
-          window.location.reload();
-          console.log(res);
-        });
-    }
-  }
-
-
+  
 }
-
