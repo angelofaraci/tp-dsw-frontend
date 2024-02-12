@@ -1,61 +1,106 @@
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Profile</title>
-</head>
-<app-nav-bar></app-nav-bar>
-<body>
-   <!-- Informacion del usuario -->
-    <div class="container" style="padding-top: 15px;">
-        <div class="row justify-content-between" style="position: relative;">
-            <div class="col-4 reviewsTitle userLevelAndScore" *ngIf="!state">
-                <h2 style="position:relative; margin: 2%;">
-                    Level: {{this.user.level}}
-                </h2>
-            </div>
-            <div class="col-4" *ngIf="state"></div>
-            <div class="col-4 reviewsTitle">
-                
-                 <h1 *ngIf="!state">
-                    {{ this.user.username }}
-                 </h1>
-                 <form (ngSubmit)="editUsername()" *ngIf="state" style="min-width: 300px;">
-                    <div class="input-group form-group">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Change your Username here"
-                            value="{{this.user.username}}" name="username" [(ngModel)]="this.user.username" [ngClass]="{'is-invalid': invalid_username}">
-                            <label for="floatingInputGroup1">Change Your Username</label>
-                        </div>
-                        <button class="btn btn-primary" type="submit"> Edit </button>
-                        <button class="btn btn-danger" type="button" style="margin-left: 5px" (click)="state=!state"> X </button>
-                    </div>
-                </form>
-                             
-            </div>
-            <div class="col-4" *ngIf="state"></div> 
-            <div class="col-4 reviewsTitle userLevelAndScore" *ngIf="!state">
-                <h2 style="position:relative; margin: 2%;">
-                    Score: {{this.user.score}}
-                </h2>
-            </div>
+  </head>
+  <app-nav-bar></app-nav-bar>
+  <body>
+    <!-- Informacion del usuario -->
+    <div class="container" style="padding-top: 15px">
+      <div class="row justify-content-between" style="position: relative">
+        <div class="col-4 reviewsTitle userLevelAndScore" *ngIf="!state">
+          <h2 style="position: relative; margin: 2%">
+            Level: {{ this.user.level }}
+          </h2>
         </div>
-        <div class="row justify-content-between" style="position: relative; padding-top: 15px;">
-            <div class="col-4" style="text-align: center; max-width: 200px;"><button class="btn btn-primary" style="width: 100%;" *ngIf="!state" type="button" (click)="state=!state"> Edit </button></div>  
-            <div class="col-4" style="text-align: center; max-width: 200px;"><button class="btn btn-danger"  style="width: 100%;" *ngIf="!state" type="button" (click)="deleteUser()" > Delete User </button></div>
+        <div class="col-4" *ngIf="state"></div>
+        <div class="col-4 reviewsTitle">
+          <h1 *ngIf="!state">
+            {{ this.user.username }}
+          </h1>
+          <form
+            (ngSubmit)="editUsername()"
+            *ngIf="state"
+            style="min-width: 300px"
+          >
+            <div class="input-group form-group">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingInputGroup1"
+                  placeholder="Change your Username here"
+                  value="{{ this.user.username }}"
+                  name="username"
+                  [(ngModel)]="this.user.username"
+                  [ngClass]="{ 'is-invalid': invalid_username }"
+                />
+                <label for="floatingInputGroup1">Change Your Username</label>
+              </div>
+              <button class="btn btn-primary" type="submit">Edit</button>
+              <button
+                class="btn btn-danger"
+                type="button"
+                style="margin-left: 5px"
+                (click)="state = !state"
+              >
+                X
+              </button>
+            </div>
+          </form>
         </div>
-        <hr>
-        <h3 style="padding-top: 15px;">My Reviews</h3>
-        <hr>
+        <div class="col-4" *ngIf="state"></div>
+        <div class="col-4 reviewsTitle userLevelAndScore" *ngIf="!state">
+          <h2 style="position: relative; margin: 2%">
+            Score: {{ this.user.score }}
+          </h2>
+        </div>
+      </div>
+      <div
+        class="row justify-content-between"
+        style="position: relative; padding-top: 15px"
+      >
+        <div
+          *ngIf="this.sameUser"
+          class="col-4"
+          style="text-align: center; max-width: 200px"
+        >
+          <button
+            class="btn btn-primary"
+            style="width: 100%"
+            *ngIf="!state"
+            type="button"
+            (click)="state = !state"
+          >
+            Edit
+          </button>
+        </div>
+        <div
+          *ngIf="this.sameUser"
+          class="col-4"
+          style="text-align: center; max-width: 200px"
+        >
+          <button
+            class="btn btn-danger"
+            style="width: 100%"
+            *ngIf="!state"
+            type="button"
+            (click)="deleteUser()"
+          >
+            Delete User
+          </button>
+        </div>
+      </div>
+      <hr />
+      <h3 style="padding-top: 15px">My Reviews</h3>
+      <hr />
+    </div>
 
-    </div>
-    
     <div *ngFor="let review of reviews; let i = index">
-        <app-user-review
-          [review]="reviews[i]"
-          [userData]="user"
-        ></app-user-review>
+      <app-user-review
+        [review]="reviews[i]"
+        [userData]="user"
+      ></app-user-review>
     </div>
-    
-    
-</body>
+  </body>
 </html>

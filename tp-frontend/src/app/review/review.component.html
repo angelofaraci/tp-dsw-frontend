@@ -9,7 +9,17 @@
     <li class="list-group-item" style="width: 100%">
       <div class="col">
         <div class="d-flex w-100 justify-content-between">
-          <h3 class="mb-1" routerLink="/user/{{this.userData.username}}">{{ this.review.userId.username }}</h3>
+          <h3
+            class="mb-1 underline"
+            style="cursor: pointer;"
+            [routerLink]="
+              review.userId.username === userData.username
+                ? '/myprofile'
+                : '/user/' + this.review.userId.username
+            "
+          >
+            {{ this.review.userId.username }}
+          </h3>
         </div>
         <div *ngIf="review.spoiler_check">
           <h6
@@ -24,7 +34,9 @@
         </div>
         <small style="font-style: italic; display: flex; justify-content: end">
           {{ this.reviewDate }}
-          <ng-container *ngIf="this.review.createdAt != this.review.updatedAt">(Edited)</ng-container>
+          <ng-container *ngIf="this.review.createdAt != this.review.updatedAt"
+            >(Edited)</ng-container
+          >
         </small>
       </div>
     </li>

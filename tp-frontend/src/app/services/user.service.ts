@@ -13,6 +13,10 @@ export class UserService {
 
   private URL = 'http://localhost:3000/api/user'
 
+  getUserPublicData(username: string){
+    return this.http.get<any>(this.URL + '/user/' + username)
+  }
+
   getUserData(){
     
     return  this.http.get<any>(this.URL + '/profile')

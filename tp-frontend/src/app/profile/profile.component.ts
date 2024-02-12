@@ -4,7 +4,7 @@ import { ReviewService } from '../services/review.service';
 import { GameService } from '../services/game.service';
 import { catchError, pipe } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -22,40 +22,69 @@ export class ProfileComponent implements OnInit {
     gameId: '',
     userId: '',
   };
-
+  sameUser: boolean = false
   state: boolean = false;
   invalid_username: boolean = false;
-
+  usernameToSearch: string = '';
   constructor(
     private userService: UserService,
     private reviewService: ReviewService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
-    this.userService
-      .getUserData()
-      .pipe(
-        catchError((err: any) => {
-          return err;
-        })
-      )
-      .subscribe((res) => {
-        this.user = res.userData;
-        console.log(this.user);
-        this.reviewService
-          .findAllForUser(this.user._id)
-          .pipe(
-            catchError((err: any) => {
-              return err;
-            })
-          )
-          .subscribe((res) => {
-            this.reviews = this.reviews.concat(res);
-            console.log(this.reviews);
-          });
+  async ngOnInit() {
+    if (this.router.url === '/myprofile') {
+      this.sameUser = true
+      this.userService
+        .getUserData()
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          this.user = res.userData;
+          console.log(this.user);
+          this.reviewService
+            .findAllForUser(this.user._id)
+            .pipe(
+              catchError((err: any) => {
+                return err;
+              })
+            )
+            .subscribe((res) => {
+              this.reviews = this.reviews.concat(res);
+              console.log(this.reviews);
+            });
+        });
+    } else {
+      this.route.params.subscribe((params) => {
+        this.usernameToSearch = params['username'];
       });
+      await this.userService
+        .getUserPublicData(this.usernameToSearch)
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          this.user = res.publicInput;
+          this.reviewService
+            .findAllForUser(this.user._id)
+            .pipe(
+              catchError((err: any) => {
+                return err;
+              })
+            )
+            .subscribe((res) => {
+              this.reviews = this.reviews.concat(res);
+              console.log(this.reviews);
+            });
+        });
+    }
   }
 
   editUsername() {
