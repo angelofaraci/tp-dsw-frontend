@@ -6,17 +6,13 @@ import { catchError, pipe } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-
-  user: any = {
-
-   }
+  user: any = {};
   reviews: any = [];
 
   review: any = {
@@ -27,67 +23,71 @@ export class ProfileComponent implements OnInit {
     userId: '',
   };
 
-  state:boolean = false;
-  invalid_username:boolean = false;
+  state: boolean = false;
+  invalid_username: boolean = false;
 
   constructor(
     private userService: UserService,
-    private reviewService: ReviewService, 
+    private reviewService: ReviewService,
     private authService: AuthService,
-    private router: Router)
-     {
-  }
+    private router: Router
+  ) {}
 
-
-  ngOnInit(){
-    this.userService.getUserData().pipe(catchError((err: any) => {
-      return err} ))
-      .subscribe(
-        res =>{
-          this.user = res.userData
-          console.log(this.user)
-          this.reviewService.findAllForUser(this.user._id).pipe(catchError((err: any) => {
-            return err} ))
-            .subscribe(
-              res =>{
-                this.reviews = this.reviews.concat(res)
-                console.log(this.reviews)         
-              }
-            )   
-        }
+  ngOnInit() {
+    this.userService
+      .getUserData()
+      .pipe(
+        catchError((err: any) => {
+          return err;
+        })
       )
+      .subscribe((res) => {
+        this.user = res.userData;
+        console.log(this.user);
+        this.reviewService
+          .findAllForUser(this.user._id)
+          .pipe(
+            catchError((err: any) => {
+              return err;
+            })
+          )
+          .subscribe((res) => {
+            this.reviews = this.reviews.concat(res);
+            console.log(this.reviews);
+          });
+      });
   }
 
   editUsername() {
-    if(!this.user.username){
+    if (!this.user.username) {
       this.invalid_username = true;
+    } else {
+      this.userService
+        .changeUsername(this.user)
+        .pipe(
+          catchError((err: any) => {
+            this.invalid_username = true;
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          window.location.reload();
+        });
     }
-    else{
-      this.userService.changeUsername(this.user)
+  }
+
+  async deleteUser() {
+    await this.userService
+      .deleteUser(this.user._id)
       .pipe(
-        catchError((err: any) => {this.invalid_username = true;return err} )
+        catchError((err: any) => {
+          return err;
+        })
       )
-      .subscribe(
-        res => {
-          window.location.reload()
-        }
-      )
-    }
-      
+      .subscribe((res) => {
+        this.authService.logOut();
+        this.router.navigate(['/home']);
+        console.log(res);
+      });
   }
-  
- async deleteUser(){
-    await this.userService.deleteUser(this.user._id)
-    .pipe(
-      catchError((err: any) => {return err} )
-    )
-    .subscribe(
-      res => {
-        this.authService.logOut()
-        this.router.navigate(['/home'])
-        console.log(res)
-      })
-  }
-
-
 }

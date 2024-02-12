@@ -20,7 +20,7 @@ export class ReviewComponent implements OnInit {
     spoiler_check: false,
     gameId: '',
     userId: '',
-    updatedAt: new Date
+    updatedAt: ''
   };
 
   @Input()
@@ -36,9 +36,8 @@ export class ReviewComponent implements OnInit {
   @Input()
   userData: User = { id: '', username: '', password: '', email: '' };
 
-  reviewDate?: string = this.review.updatedAt?.toDateString()
-
-
+  
+reviewDate = ''
 
   ngOnInit(): void {
     let color1 = String(0);
@@ -56,6 +55,8 @@ export class ReviewComponent implements OnInit {
     document.documentElement.style.setProperty('--color1', color1);
     document.documentElement.style.setProperty('--color2', color2);
     document.documentElement.style.setProperty('--color3', color3);
+
+    this.reviewDate = this.review.updatedAt!.substring(0, 10)
   }
 
   deleteReview(review: any) {

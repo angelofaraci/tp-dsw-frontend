@@ -9,7 +9,7 @@
     <li class="list-group-item" style="width: 100%">
       <div class="col">
         <div class="d-flex w-100 justify-content-between">
-          <h3 class="mb-1">{{ this.review.userId.username }}</h3>
+          <h3 class="mb-1" routerLink="/user/{{this.userData.username}}">{{ this.review.userId.username }}</h3>
         </div>
         <div *ngIf="review.spoiler_check">
           <h6

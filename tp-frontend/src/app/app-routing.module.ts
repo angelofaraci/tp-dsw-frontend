@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LogInComponent},
   { path: 'loginAdmin', component: AdminLogInComponent},
-  { path: 'myprofile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'user/:id', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'signup', component: SignInComponent},
   { path: 'home', component: HomeComponent },
   { path: 'game/:id', component: GamePageComponent, canActivate: [AuthGuard] },

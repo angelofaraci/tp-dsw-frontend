@@ -6,6 +6,6 @@ export interface Review {
     private?: boolean,
     userId: any,
     gameId: any,
-    createdAt?: Date,
-    updatedAt?: Date
+    createdAt?: string,
+    updatedAt?: string
 }
