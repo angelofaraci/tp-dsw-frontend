@@ -39,6 +39,8 @@ export class ReviewComponent implements OnInit {
   
 reviewDate = ''
 
+
+
   ngOnInit(): void {
     let color1 = String(0);
     let color2 = String(0);
@@ -71,7 +73,6 @@ reviewDate = ''
         window.location.reload();
         console.log(res);
       });
-    //window.location.reload()
   }
 
  
