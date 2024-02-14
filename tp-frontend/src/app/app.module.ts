@@ -23,6 +23,7 @@ import { ReviewComponent } from './review/review.component';
 import { UserReviewComponent } from './user-review/user-review.component';
 import { GameInfoComponent } from './game-info/game-info.component';
 import { ReviewFormComponent } from './review-form/review-form.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ReviewFormComponent } from './review-form/review-form.component';
     UserReviewComponent,
     GameInfoComponent,
     ReviewFormComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
