@@ -43,6 +43,26 @@
     <div
       class="d-grid mx-auto"
       style="display: flex; margin-bottom: 0px"
+      *ngIf="!(review.userId.username === userData.username)"
+    >
+      <button
+        class="btn btn-success"
+        (click)="likeClicked()"
+        [class.active]="liked"
+      >
+        <i class="fas fa-thumbs-up"></i>
+      </button>
+      <button
+        class="btn btn-danger"
+        (click)="dislikeClicked()"
+        [class.active]="disliked"
+      >
+        <i class="fas fa-thumbs-down"></i>
+      </button>
+    </div>
+    <div
+      class="d-grid mx-auto"
+      style="display: flex; margin-bottom: 0px"
       *ngIf="review.userId.username === userData.username"
     >
       <button

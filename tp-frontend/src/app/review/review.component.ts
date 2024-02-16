@@ -20,7 +20,8 @@ export class ReviewComponent implements OnInit {
     spoiler_check: false,
     gameId: '',
     userId: '',
-    updatedAt: ''
+    updatedAt: '',
+    likeState: []
   };
 
   @Input()
@@ -36,9 +37,94 @@ export class ReviewComponent implements OnInit {
   @Input()
   userData: User = { id: '', username: '', password: '', email: '' };
 
-  
-reviewDate = ''
+  reviewDate = '';
 
+  liked: boolean = false;
+  disliked: boolean = false;
+
+  async likeClicked() {
+    if (this.liked) {
+      this.reviewService
+        .changeLikes(this.review._id, 'removeLike', this.userData._id)
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          console.log(res);
+        });
+    }
+    if (this.disliked) {
+      this.reviewService
+        .changeLikes(this.review._id, 'likeFromDislike', this.userData._id)
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          console.log(res);
+        });
+    }
+    if (!this.liked && !this.disliked) {
+      this.reviewService
+        .changeLikes(this.review._id, 'like', this.userData._id)
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          console.log(res);
+        });
+    }
+
+    this.liked = !this.liked;
+    this.disliked = false;
+  }
+
+  async dislikeClicked() {
+    if (this.liked) {
+      this.reviewService
+        .changeLikes(this.review._id, 'dislikeFromLike', this.userData._id)
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          console.log(res);
+        });
+    }
+    if (this.disliked) {
+      this.reviewService
+        .changeLikes(this.review._id, 'removeDislike', this.userData._id)
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          console.log(res);
+        });
+    }
+    if (!this.liked && !this.disliked) {
+      this.reviewService
+        .changeLikes(this.review._id, 'dislike', this.userData._id)
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          console.log(res);
+        });
+    }
+
+    this.disliked = !this.disliked;
+    this.liked = false;
+  }
 
 
   ngOnInit(): void {
@@ -58,7 +144,23 @@ reviewDate = ''
     document.documentElement.style.setProperty('--color2', color2);
     document.documentElement.style.setProperty('--color3', color3);
 
-    this.reviewDate = this.review.updatedAt!.substring(0, 10)
+    this.reviewDate = this.review.updatedAt!.substring(0, 10);
+
+    const state = this.review.likeState.find(i => i.userId === this.userData._id)
+    if (state?.state === 'like'){
+      this.liked = true
+    }
+    if (state?.state === 'dislike'){
+      this.disliked = true
+    }
+    if (state?.state === 'neutral'){
+      this.liked = false
+      this.disliked = false
+    }
+    if (!state){
+      this.liked = false
+      this.disliked = false
+    }
   }
 
   deleteReview(review: any) {
@@ -75,11 +177,7 @@ reviewDate = ''
       });
   }
 
- 
-
-
-
   editMode: boolean = false;
 
-  
+
 }

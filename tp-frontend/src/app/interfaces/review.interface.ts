@@ -1,3 +1,6 @@
+import { LikeState } from "./likestate.interface.js";
+
+
 export interface Review {
     _id?: any,
     rating: number,
@@ -7,5 +10,6 @@ export interface Review {
     userId: any,
     gameId: any,
     createdAt?: string,
-    updatedAt?: string
+    updatedAt?: string,
+    likeState: LikeState[]
 }

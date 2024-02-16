@@ -24,6 +24,7 @@ export class ReviewFormComponent {
     spoiler_check: false,
     gameId: '',
     userId: '',
+    likeState: []
   };
 
   toggleSwitchSpoiler() {

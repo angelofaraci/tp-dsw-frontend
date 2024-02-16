@@ -41,6 +41,7 @@ export class GamePageComponent implements OnInit {
     spoiler_check: false,
     gameId: '',
     userId: '',
+    likeState: []
   };
 
   reviewed: boolean = false;

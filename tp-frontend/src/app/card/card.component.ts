@@ -13,7 +13,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     let words = this.game.description.split(' ')
-    let shortDescription = words.slice(0, 50).join(' ')
+    let shortDescription = words.slice(0, 40).join(' ')
     shortDescription = shortDescription+'...'
     this.game.description = shortDescription
   }
