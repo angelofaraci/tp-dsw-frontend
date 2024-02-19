@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
         )
         .subscribe((res) => {
           this.user = res.userData;
-          console.log(this.user);
+          console.log(this.user._id);
           this.reviewService
             .findAllForUser(this.user._id)
             .pipe(
@@ -72,6 +72,7 @@ export class ProfileComponent implements OnInit {
         )
         .subscribe((res) => {
           this.user = res.publicInput;
+          console.log(this.user._id)
           this.reviewService
             .findAllForUser(this.user._id)
             .pipe(
