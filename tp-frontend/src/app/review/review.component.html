@@ -15,7 +15,7 @@
             [routerLink]="
               review.userId.username === userData.username
                 ? '/myprofile'
-                : '/user/' + this.review.userId.username
+                : '/user/' + this.review.userId.email
             "
           >
             {{ this.review.userId.username }}
@@ -29,8 +29,13 @@
             [SPOILER] See review
           </h6>
         </div>
+        <small style="color: gray;">
+          {{ this.review.userId.email }}
+        </small>
         <div *ngIf="!review.spoiler_check">
-          <p class="mb-1">{{ this.review.body }}</p>
+          <p class="mb-1">{{ this.BodyLine1 }}</p>
+          <p class="mb-1">{{ this.BodyLine2 }}</p>
+          <p class="mb-1">{{ this.BodyLine3 }}</p>
         </div>
         <small style="font-style: italic; display: flex; justify-content: end">
           {{ this.reviewDate }}

@@ -42,6 +42,10 @@ export class ReviewComponent implements OnInit {
   liked: boolean = false;
   disliked: boolean = false;
 
+  BodyLine1 = ''
+  BodyLine2 = ''
+  BodyLine3 = ''
+
   async likeClicked() {
     if (this.liked) {
       this.reviewService
@@ -145,6 +149,10 @@ export class ReviewComponent implements OnInit {
     document.documentElement.style.setProperty('--color3', color3);
 
     this.reviewDate = this.review.updatedAt!.substring(0, 10);
+
+    this.BodyLine1 = this.review.body.substring(0,100)
+    this.BodyLine2 = this.review.body.substring(100,200)
+    this.BodyLine3 = this.review.body.substring(200,300)
 
     const state = this.review.likeState.find(i => i.userId === this.userData._id)
     if (state?.state === 'like'){

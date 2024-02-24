@@ -16,6 +16,10 @@ export class UserReviewComponent {
   @Input()
   userData: any;
 
+  BodyLine1 = ''
+  BodyLine2 = ''
+  BodyLine3 = ''
+
   ngOnInit(): void {
     let color1 = String(0);
     let color2 = String(0);
@@ -32,6 +36,10 @@ export class UserReviewComponent {
     document.documentElement.style.setProperty('--color1', color1);
     document.documentElement.style.setProperty('--color2', color2);
     document.documentElement.style.setProperty('--color3', color3);
+
+    this.BodyLine1 = this.review.body.substring(0,100)
+    this.BodyLine2 = this.review.body.substring(100,200)
+    this.BodyLine3 = this.review.body.substring(200,300)
   }
 
   deleteReview(review: any) {

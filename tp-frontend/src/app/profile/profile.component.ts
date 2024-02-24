@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   sameUser: boolean = false
   state: boolean = false;
   invalid_username: boolean = false;
-  usernameToSearch: string = '';
+  mailToSearch: string = '';
   constructor(
     private userService: UserService,
     private reviewService: ReviewService,
@@ -46,7 +46,6 @@ export class ProfileComponent implements OnInit {
         )
         .subscribe((res) => {
           this.user = res.userData;
-          console.log(this.user._id);
           this.reviewService
             .findAllForUser(this.user._id)
             .pipe(
@@ -55,16 +54,15 @@ export class ProfileComponent implements OnInit {
               })
             )
             .subscribe((res) => {
-              this.reviews = this.reviews.concat(res);
-              console.log(this.reviews);
+              this.reviews = this.reviews.concat(res)
             });
         });
     } else {
       this.route.params.subscribe((params) => {
-        this.usernameToSearch = params['username'];
+        this.mailToSearch = params['email'];
       });
       await this.userService
-        .getUserPublicData(this.usernameToSearch)
+        .getUserPublicData(this.mailToSearch)
         .pipe(
           catchError((err: any) => {
             return err;
@@ -72,7 +70,6 @@ export class ProfileComponent implements OnInit {
         )
         .subscribe((res) => {
           this.user = res.publicInput;
-          console.log(this.user._id)
           this.reviewService
             .findAllForUser(this.user._id)
             .pipe(
@@ -82,7 +79,6 @@ export class ProfileComponent implements OnInit {
             )
             .subscribe((res) => {
               this.reviews = this.reviews.concat(res);
-              console.log(this.reviews);
             });
         });
     }
