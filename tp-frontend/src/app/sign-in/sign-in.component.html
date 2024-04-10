@@ -43,7 +43,7 @@
         </button>
       </div>
       <div *ngIf="error">
-        <p class="alert alert-danger" role="alert">E-Mail already registered</p>
+        <p class="alert alert-danger" role="alert">{{errorMessage}}</p>
       </div>
       <a routerLink="/login">Already registered? Log In.</a>
     </form>

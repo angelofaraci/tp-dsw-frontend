@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   sameUser: boolean = false
   state: boolean = false;
   invalid_username: boolean = false;
-  mailToSearch: string = '';
+  usernameToSearch: string = '';
   constructor(
     private userService: UserService,
     private reviewService: ReviewService,
@@ -59,12 +59,13 @@ export class ProfileComponent implements OnInit {
         });
     } else {
       this.route.params.subscribe((params) => {
-        this.mailToSearch = params['email'];
+        this.usernameToSearch = params['username'];
       });
       await this.userService
-        .getUserPublicData(this.mailToSearch)
+        .getUserPublicData(this.usernameToSearch)
         .pipe(
           catchError((err: any) => {
+            this.router.navigate(['/home']);
             return err;
           })
         )

@@ -18,7 +18,7 @@ export class SignInComponent {
   };
 
 error: boolean = false;
-  
+errorMessage: string = ''; 
   constructor(private router: Router, private authService: AuthService){
 
   }
@@ -29,7 +29,8 @@ error: boolean = false;
       catchError((err: any) => {
         console.error(err);
         this.error = true
-        return err} )
+        this.errorMessage=err.error.message
+        return ''} )
     )
       .subscribe(
         res => {

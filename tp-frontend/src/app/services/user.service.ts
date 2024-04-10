@@ -13,8 +13,8 @@ export class UserService {
 
   private URL = 'http://localhost:3000/api/user'
 
-  getUserPublicData(email: string){
-    return this.http.get<any>(this.URL + '/user/' + email)
+  getUserPublicData(username: string){
+    return this.http.get<any>(this.URL + '/user/' + username)
   }
 
   getUserData(){
