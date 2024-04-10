@@ -15,7 +15,7 @@
             [routerLink]="
               review.userId.username === userData.username
                 ? '/myprofile'
-                : '/user/' + this.review.userId.email
+                : '/user/' + this.review.userId.username
             "
           >
             {{ this.review.userId.username }}

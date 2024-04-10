@@ -102,6 +102,7 @@ export class GamePageComponent implements OnInit {
                           })
                         )
                         .subscribe((res) => {
+                          console.log(this.reviews)
                           this.gameData = res.data;
                         });
                     });
