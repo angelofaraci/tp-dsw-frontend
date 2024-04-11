@@ -20,25 +20,47 @@ export class LogInComponent {
     password: ''
   }
 
+invalid_email : boolean = false;
+invalid_password : boolean = false;
+
 error: boolean = false;
+errorMessage: string = '';
 
   logIn(){
+    this.invalid_email = false;
+    this.invalid_password = false;
+
+    if (!this.user.email || !this.user.password){
+      if (!this.user.email){
+        this.invalid_email = true;
+      }
+      if (!this.user.password){
+        this.invalid_password = true;
+      }
+      this.errorMessage = 'You must enter email and password'
+      this.error = true;
+    }
+    else {
     this.authService.logIn(this.user)
     .pipe(
       catchError((err: any) => {
-        console.log('ENTRO POR EL ERROR')
-
+        this.errorMessage = err.error.message
+        if (err.error.case == 'email'){
+          this.invalid_email = true;
+        }
+        if (err.error.case == 'password'){
+          this.invalid_password = true;
+        }
         this.error = true
         return ''})
     )
       .subscribe(
         res => {
-          console.log('NO ENTRO POR EL ERROR')
           localStorage.setItem('token', res.token)
           this.router.navigate(['/home'])
         }
       )
-    
+    }
   }
 
 }

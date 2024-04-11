@@ -12,6 +12,7 @@
           id="email"
           name="email"
           [(ngModel)]="this.user.email"
+          [ngClass]="{ 'is-invalid': invalid_email}"
           placeholder="Enter your email"
         />
       </div>
@@ -23,6 +24,7 @@
           id="password"
           name="password"
           [(ngModel)]="this.user.password"
+          [ngClass]="{ 'is-invalid': invalid_password}"
           placeholder="Enter your password"
         />
       </div>
@@ -32,7 +34,7 @@
         </button>
         <div *ngIf="error">
           <p class="alert alert-danger" role="alert">
-            Wrong E-Mail or Password
+            {{errorMessage}}
           </p>
         </div>
       </div>
