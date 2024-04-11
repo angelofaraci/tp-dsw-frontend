@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 2%">
+<div class="container mt-2" style="padding-top: 2%">
   <ul class="list-group list-group-horizontal" style="padding-top: 1%">
     <li
       class="list-group-item gameScore"
@@ -29,9 +29,7 @@
             [SPOILER] See review
           </h6>
         </div>
-        <small style="color: gray;">
-          {{ this.review.userId.email }}
-        </small>
+
         <div *ngIf="!review.spoiler_check">
           <p class="mb-1">{{ this.BodyLine1 }}</p>
           <p class="mb-1">{{ this.BodyLine2 }}</p>
