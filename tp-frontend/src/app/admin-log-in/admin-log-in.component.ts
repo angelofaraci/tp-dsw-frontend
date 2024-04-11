@@ -17,14 +17,16 @@ export class AdminLogInComponent {
   };
 
   logIn() {
-    this.authService.logIn(this.admin).subscribe(
-      (res) => {
+    this.authService
+      .logIn(this.admin)
+      .pipe(
+        catchError((err: any) => {
+          return err;
+        })
+      )
+      .subscribe((res) => {
         localStorage.setItem('admin_token', res.token);
         this.router.navigate(['/home']);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+      });
   }
 }

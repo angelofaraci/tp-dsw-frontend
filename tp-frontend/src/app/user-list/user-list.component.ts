@@ -14,7 +14,6 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   async ngOnInit(): Promise<void> {
-    console.log('LLEGA')
     await this.userService
       .getAllUserPublicData()
       .pipe(
@@ -22,12 +21,9 @@ export class UserListComponent implements OnInit {
           return err;
         })
       )
-      .subscribe(
-        res => {
-          this.users = this.users.concat(res)
-          console.log(this.users)
-
-        }
-      );
+      .subscribe((res) => {
+        this.users = this.users.concat(res);
+        console.log(this.users);
+      });
   }
 }
