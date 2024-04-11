@@ -11,6 +11,7 @@ import { AdminLogInComponent } from './admin-log-in/admin-log-in.component';
 import { LevelingComponent } from './leveling/leveling.component';
 import { GameCreationComponent } from './game-creation/game-creation.component';
 import { GameListComponent } from './game-list/game-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'listgames',
     component: GameListComponent,
+    canActivate: [AdminAuthGuard],
+  }, {
+    path: 'userlist',
+    component: UserListComponent,
     canActivate: [AdminAuthGuard],
   },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },

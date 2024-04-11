@@ -24,6 +24,7 @@ import { UserReviewComponent } from './user-review/user-review.component';
 import { GameInfoComponent } from './game-info/game-info.component';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FooterComponent } from './footer/footer.component';
     GameInfoComponent,
     ReviewFormComponent,
     FooterComponent,
+    UserListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

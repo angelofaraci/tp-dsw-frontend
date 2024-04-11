@@ -2,71 +2,37 @@
 
 <body>
   <div class="container" style="padding-top: 2%; display: block">
-    <h1 style="text-align: center">List of Games</h1>
+    <h1 style="text-align: center">List of Users</h1>
     <hr />
     <div>
       <ul
         class="list-group list-group-horizontal"
         style="padding-top: 1%"
-        *ngFor="let game of games; let i = index"
+        *ngFor="let user of users; let i = index"
       >
         <li
           class="list-group-item gameScore"
           style="width: 200px; background-color: lightgrey"
         >
-          <h1>{{ game.rating }}</h1>
+          <h1>{{ user.level }}</h1>
         </li>
-        <li
-          class="list-group-item gameScore"
-          style="border-top-right-radius: 0px; border-bottom-right-radius: 0px"
-        >
-          <img
-            src="{{ game.cover }}"
-            style="height: 200px; width: 200px"
-            alt="Image"
-          />
-        </li>
+      
         <li class="list-group-item w-100">
           <div>
             <div class="d-flex w-100 justify-content-between">
-              <h3 class="mb-1">{{ game.name }}</h3>
+              <h3 class="mb-1">{{ user.username }}</h3>
             </div>
             <div class="d-flex w-100 justify-content-between">
-              <p class="mb-1">{{ game.description }}</p>
+              <p class="mb-1">{{ user.email }}</p>
             </div>
-
-            <small
-              style="
-                font-style: italic;
-                position: absolute;
-                bottom: 5px;
-                right: 10px;
-              "
-              >Released: {{ game.release_date }}</small
-            >
           </div>
         </li>
-        <div class="d-grid mx-auto" style="display: flex; margin-bottom: 0px">
-          <button
-            class="btn btn-primary btn-sm"
-            style="margin-left: 5px; margin-bottom: 1px"
-            (click)="index = i; editMode = !editMode"
-          >
-            Edit
-          </button>
-          <button
-            class="btn btn-danger btn-sm"
-            style="margin-left: 5px"
-            (click)="deleteGame(game.id)"
-          >
-            Delete
-          </button>
-        </div>
+        
       </ul>
     </div>
   </div>
 
-  <div *ngIf="editMode" class="container mt-5">
+  <!-- <div *ngIf="editMode" class="container mt-5">
     <form (ngSubmit)="editGame()">
       <h1>Editing {{ this.games[this.index].name }}</h1>
       <div class="mb-3 form-group">
@@ -113,5 +79,5 @@
         Cancel
       </button>
     </form>
-  </div>
+  </div> -->
 </body>

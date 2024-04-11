@@ -17,6 +17,10 @@ export class UserService {
     return this.http.get<any>(this.URL + '/user/' + username)
   }
 
+  getAllUserPublicData(){
+    return this.http.get<any>(this.URL + '/getall')
+  }
+
   getUserData(){
     
     return  this.http.get<any>(this.URL + '/profile')
