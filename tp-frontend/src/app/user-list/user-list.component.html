@@ -5,6 +5,29 @@
     <h1 style="text-align: center">List of Users</h1>
     <hr />
     <div>
+      <ul class="list-group list-group-horizontal" style="padding-top: 1%">
+        <li
+          class="list-group-item gameScore"
+          style="width: 155px; background-color: lightgreen"
+        >
+          <h1>Level</h1>
+        </li>
+
+        <li
+          class="list-group-item gameScore"
+          style="width: 155px; background-color: lightblue"
+        >
+          <h1>Score</h1>
+        </li>
+
+        <li class="list-group-item w-100 flex">
+          <div class="d-flex w-100 h-100 justify-content-between">
+            <h1 class="d-flex" style="height: 100%; padding: 0%; margin: 0%">
+              Users
+            </h1>
+          </div>
+        </li>
+      </ul>
       <ul
         class="list-group list-group-horizontal"
         style="padding-top: 1%"
@@ -12,9 +35,16 @@
       >
         <li
           class="list-group-item gameScore"
-          style="width: 200px; background-color: lightgrey"
+          style="width: 200px; background-color: lightgreen"
         >
           <h1>{{ user.level }}</h1>
+        </li>
+
+        <li
+          class="list-group-item gameScore"
+          style="width: 200px; background-color: lightblue"
+        >
+          <h1>{{ user.score }}</h1>
         </li>
 
         <li class="list-group-item w-100">
@@ -33,6 +63,33 @@
             </div>
           </div>
         </li>
+        <div class="d-grid mx-auto" style="display: flex; margin-bottom: 0px">
+          <button
+          (click) ="changeLevel(users[i], 'up')"
+            class="btn btn-sm"
+            style="
+              margin-left: 5px;
+              border: none;
+              border-top-right-radius: 5px;
+              background-color: lightgreen;
+            "
+          >
+            <i class="fa fa-arrow-up" style="color: black"></i>
+
+          </button>
+          <button
+          (click) ="changeLevel(users[i], 'down')"
+            class="btn btn-sm"
+            style="
+              margin-left: 5px;
+              border: none;
+              border-bottom-right-radius: 5px;
+              background-color: lightcoral;
+            "
+          >
+            <i class="fa fa-arrow-down" style="color: black"></i>
+          </button>
+        </div>
       </ul>
     </div>
   </div>

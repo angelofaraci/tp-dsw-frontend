@@ -27,6 +27,10 @@ export class UserService {
     
   }
 
+  changeUserLevel(user: User, action:any){
+    return this.http.put<any>(this.URL + `/levelUp/${action}`, user)
+  }
+
   changeUsername(user:User){
     return this.http.put<any>(this.URL + '/update', user)
   }

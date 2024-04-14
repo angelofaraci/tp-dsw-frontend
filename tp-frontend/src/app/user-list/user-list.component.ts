@@ -10,6 +10,7 @@ import { User } from '../interfaces/user.interface.js';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
+  
 
   constructor(private userService: UserService) {}
 
@@ -25,5 +26,17 @@ export class UserListComponent implements OnInit {
         this.users = this.users.concat(res);
         console.log(this.users);
       });
+  }
+
+  changeLevel(user:User, action:any){
+    this.userService.changeUserLevel(user, action).pipe(
+      catchError((err: any) => {
+        return err;
+      })
+    )
+    .subscribe((res) => {
+      console.log(res);
+      window.location.reload();
+    });
   }
 }

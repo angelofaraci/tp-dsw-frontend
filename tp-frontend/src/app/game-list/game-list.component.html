@@ -12,7 +12,7 @@
       >
         <li
           class="list-group-item gameScore"
-          style="width: 200px; background-color: lightgrey"
+          style="width: 200px; background-color: lightskyblue"
         >
           <h1>{{ game.rating }}</h1>
         </li>
@@ -48,18 +48,18 @@
         </li>
         <div class="d-grid mx-auto" style="display: flex; margin-bottom: 0px">
           <button
-            class="btn btn-primary btn-sm"
-            style="margin-left: 5px; margin-bottom: 1px"
+            class="btn btn-sm"
+            style="margin-left: 5px; margin-bottom: 1px; background-color: lightblue;"
             (click)="index = i; editMode = !editMode"
           >
-            Edit
+            <i class="fa fa-pen"></i>
           </button>
           <button
-            class="btn btn-danger btn-sm"
-            style="margin-left: 5px"
+            class="btn btn-sm"
+            style="margin-left: 5px; background-color: lightcoral;"
             (click)="deleteGame(game.id)"
           >
-            Delete
+          <i class="fa fa-trash"></i>
           </button>
         </div>
       </ul>

@@ -51,7 +51,6 @@ export class ReviewService {
   }
 
   changeLikes(reviewId: any, action: any, userId: any) {
-    console.log(reviewId, '  ', action, '   ', userId);
     return this.http.post<any>(this.URL + `/${reviewId}/${action}/${userId}`, null);
   }
 }
