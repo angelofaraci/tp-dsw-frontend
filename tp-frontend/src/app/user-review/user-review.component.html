@@ -36,31 +36,38 @@
     >
       <button
         class="btn btn-primary btn-sm"
-        style="margin-left: 5px; margin-bottom: 1px"
-        (click)="editMode = !editMode"
+        style="
+          margin-left: 5px;
+          margin-bottom: 1px;
+          background-color: lightblue;
+        "
+        data-bs-toggle="modal"
+        data-bs-target="#reviewModal"
       >
-        Edit
+        <i class="fa fa-pen" style="color: black"></i>
       </button>
+
       <button
         class="btn btn-danger btn-sm"
-        style="margin-left: 5px"
+        style="margin-left: 5px; background-color: lightcoral"
         (click)="deleteReview(review)"
       >
-        Delete
+        <i class="fa fa-trash" style="color: black"></i>
       </button>
     </div>
   </ul>
 </div>
 
-<div class="container mt-5 form border" *ngIf="editMode">
-  <form (ngSubmit)="editReview()">
-    <h2>Edit your review</h2>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-2"><p>Does your review contain spoilers?</p></div>
-        <div class="col-sm-2">
-          <div class="form-check">
+<div class="modal fade" id="reviewModal">
+  <div class="modal-dialog">
+    <form (ngSubmit)="editReview()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Edit your review</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            Does your review contain spoilers?
             <input
               class="form-check-input"
               type="checkbox"
@@ -69,36 +76,38 @@
               name="miCheckbox"
               (ngModelChange)="toggleSwitchSpoiler()"
             />
+          </p>
+          <div class="form-group">
+            <label for="rating">New Score (1-100):</label>
+            <input
+              type="number"
+              id="rating"
+              class="form-control"
+              name="rating"
+              min="1"
+              max="100"
+              [(ngModel)]="this.review.rating"
+              [ngClass]="{ 'is-invalid': invalid_rating }"
+            />
+          </div>
+          <div class="form-group">
+            <label for="comment">New Review:</label>
+            <textarea
+              id="comment"
+              class="form-control"
+              name="body"
+              [(ngModel)]="this.review.body"
+              [ngClass]="{ 'is-invalid': invalid_body }"
+            ></textarea>
           </div>
         </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >
+            Edit your review
+          </button>
+          <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label for="rating">New Score (1-100):</label>
-      <input
-        type="number"
-        id="rating"
-        class="form-control"
-        name="rating"
-        min="1"
-        max="100"
-        [(ngModel)]="this.review.rating"
-        [ngClass]="{ 'is-invalid': invalid_rating }"
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="comment">New Review:</label>
-      <textarea
-        id="comment"
-        class="form-control"
-        name="body"
-        [(ngModel)]="this.review.body"
-        [ngClass]="{ 'is-invalid': invalid_body }"
-      ></textarea>
-    </div>
-
-    <button class="btn btn-primary" type="submit">Edit your review</button>
-  </form>
+    </form>
+  </div>
 </div>

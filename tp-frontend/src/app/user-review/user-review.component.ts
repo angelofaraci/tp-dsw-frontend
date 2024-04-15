@@ -69,7 +69,7 @@ export class UserReviewComponent {
     console.log(this.review);
   }
 
-  editMode: boolean = false;
+  
 
   editReview() {
     const gameData = this.review.gameId;
@@ -99,19 +99,19 @@ export class UserReviewComponent {
     } else {
       this.invalid_body = false;
       this.invalid_rating = false;
-      this.review.gameId = gameData._id;
       this.review.userId = this.userData._id;
       this.reviewService
-        .editReview(this.review, this.userData._id, gameData._id)
-
+        .editReview(this.review, this.userData._id, gameData)
         .pipe(
           catchError((err: any) => {
+            console.log(this.review.gameId)
             return err;
           })
         )
         .subscribe((res) => {
-          window.location.reload();
           console.log(res);
+          window.location.reload();
+
         });
     }
   }

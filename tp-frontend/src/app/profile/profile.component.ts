@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
     userId: '',
   };
   sameUser: boolean = false
-  state: boolean = false;
   invalid_username: boolean = false;
   usernameToSearch: string = '';
   constructor(

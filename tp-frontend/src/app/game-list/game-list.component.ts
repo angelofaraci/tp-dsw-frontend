@@ -16,7 +16,6 @@ export class GameListComponent implements OnInit {
 
 
   
-editMode: boolean = false
   game: any = {
     name: '',
     description: '',
@@ -63,7 +62,7 @@ this.invalid_description= !!!this.game.description;
 let validation = !!(this.game.name && this.game.description)
 if(validation){
 this.game.release_date = this.games[this.index].release_date
-await this.gameService.updateGame(this.game, this.games[this.index]._id)
+await this.gameService.updateGame(this.game, this.games[this.index].id)
 .pipe(
   catchError((err: any) => {return err} )
 )
