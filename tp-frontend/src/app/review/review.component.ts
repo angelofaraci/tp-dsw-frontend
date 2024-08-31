@@ -49,7 +49,7 @@ export class ReviewComponent implements OnInit {
   async likeClicked() {
     if (this.liked) {
       this.reviewService
-        .changeLikes(this.review._id, 'removeLike', this.userData._id)
+        .changeLikes(this.review._id, 'removeLike', this.review.userId._id)
         .pipe(
           catchError((err: any) => {
             return err;
@@ -61,7 +61,7 @@ export class ReviewComponent implements OnInit {
     }
     if (this.disliked) {
       this.reviewService
-        .changeLikes(this.review._id, 'likeFromDislike', this.userData._id)
+        .changeLikes(this.review._id, 'likeFromDislike', this.review.userId._id)
         .pipe(
           catchError((err: any) => {
             return err;
@@ -73,7 +73,7 @@ export class ReviewComponent implements OnInit {
     }
     if (!this.liked && !this.disliked) {
       this.reviewService
-        .changeLikes(this.review._id, 'like', this.userData._id)
+        .changeLikes(this.review._id, 'like', this.review.userId._id)
         .pipe(
           catchError((err: any) => {
             return err;
@@ -91,7 +91,7 @@ export class ReviewComponent implements OnInit {
   async dislikeClicked() {
     if (this.liked) {
       this.reviewService
-        .changeLikes(this.review._id, 'dislikeFromLike', this.userData._id)
+        .changeLikes(this.review._id, 'dislikeFromLike', this.review.userId._id)
         .pipe(
           catchError((err: any) => {
             return err;
@@ -103,7 +103,7 @@ export class ReviewComponent implements OnInit {
     }
     if (this.disliked) {
       this.reviewService
-        .changeLikes(this.review._id, 'removeDislike', this.userData._id)
+        .changeLikes(this.review._id, 'removeDislike', this.review.userId._id)
         .pipe(
           catchError((err: any) => {
             return err;
@@ -115,7 +115,7 @@ export class ReviewComponent implements OnInit {
     }
     if (!this.liked && !this.disliked) {
       this.reviewService
-        .changeLikes(this.review._id, 'dislike', this.userData._id)
+        .changeLikes(this.review._id, 'dislike', this.review.userId._id)
         .pipe(
           catchError((err: any) => {
             return err;

@@ -29,6 +29,7 @@ export class UserListComponent implements OnInit {
   }
 
   changeLevel(user:User, action:any){
+    console.log(user);
     this.userService.changeUserLevel(user, action).pipe(
       catchError((err: any) => {
         return err;
