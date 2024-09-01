@@ -22,7 +22,7 @@ export class CarouselComponent implements OnInit {
     },
     {
      title: 'Super Mario Odyssey',
-     img: 'https://i0.wp.com/losreyesdelmando.com/wp-content/uploads/2017/11/super-mario-odyssey-1.jpg?fit=1920%2C1080&ssl=1',
+     img: 'https://i.imgur.com/9NlsvBJ.png',
      rating: 65,
     },
     {
