@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GameService } from '../services/game.service';
 import { catchError } from 'rxjs';
 import { Title } from '@angular/platform-browser';
@@ -10,10 +10,19 @@ import { Title } from '@angular/platform-browser';
 })
 export class CarouselComponent implements OnInit {
  
-  constructor(private gameService: GameService){
+  @Input()
+  games: any
+  constructor(private gameService: GameService){}
 
-  }
-
+  game: any = {
+    name: null,
+    description: null,
+    cover: '',
+    banner: '',
+    release_date: null,
+    rating: 0,
+  };
+  
   featuredReviews: any = [
     {
       title: 'Undertale',

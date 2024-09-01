@@ -3,21 +3,19 @@
 <!-- Review -->
 <body>
   <app-game-info [gameData]="this.gameData"></app-game-info>
-
-  <div *ngFor="let review of reviews; let i = index">
-    <app-review
-      [review]="reviews[i]"
-      [userData]="userData"
-      [gameData]="gameData"
-    ></app-review>
-  </div>
-
   <div class="container mt-5 form border" *ngIf="!reviewed">
     <app-review-form
       [gameId]="this.gameData._id"
       [userId]="this.userData._id"
       [isThisEdit]="false"
     ></app-review-form>
+  </div>
+  <div *ngFor="let review of reviews; let i = index">
+    <app-review
+      [review]="reviews[i]"
+      [userData]="userData"
+      [gameData]="gameData"
+    ></app-review>
   </div>
 </body>
 

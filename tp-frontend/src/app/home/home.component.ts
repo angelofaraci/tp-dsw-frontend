@@ -10,6 +10,7 @@ import { catchError } from 'rxjs';
 export class HomeComponent implements OnInit {
   constructor(private gameService: GameService) {}
   game: any = {
+    id: null,
     name: null,
     description: null,
     cover: '',
@@ -17,11 +18,12 @@ export class HomeComponent implements OnInit {
     release_date: null,
     rating: 0,
   };
-  games = [this.game];
+  recentGames = [this.game];
+  moreLikedGames = [this.game]
   async ngOnInit(): Promise<void> {
     try {
       await this.gameService
-        .getGamesDataByDate(4)
+        .getGamesDataByDate(3)
         .pipe(
           catchError((err: any) => {
             return err;
@@ -29,7 +31,23 @@ export class HomeComponent implements OnInit {
         )
         .subscribe((res) => {
           console.log(res.data);
-          this.games = res.data;
+          this.recentGames = res.data;
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+    try {
+      await this.gameService
+        .getGamesDataByRating(4)
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          console.log(res.data);
+          this.moreLikedGames = res.data;
         });
     } catch (error) {
       console.log(error);

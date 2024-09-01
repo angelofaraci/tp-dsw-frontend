@@ -49,40 +49,51 @@
       *ngIf="!(review.userId.username === userData.username)"
     >
       <button
-        class="btn btn-success"
+        class="btn btn-sm"
+        style="
+          margin-left: 5px;
+          margin-bottom: 1px;
+          background-color: lightgreen;
+        "
         (click)="likeClicked()"
         [class.active]="liked"
       >
         <i class="fas fa-thumbs-up"></i>
       </button>
       <button
-        class="btn btn-danger"
+        class="btn btn-sm"
+        style="
+          margin-left: 5px;
+          margin-bottom: 1px;
+          background-color: lightcoral;
+        "
         (click)="dislikeClicked()"
         [class.active]="disliked"
       >
         <i class="fas fa-thumbs-down"></i>
       </button>
     </div>
-    <div
-      class="d-grid mx-auto"
-      style="display: flex; margin-bottom: 0px"
-      *ngIf="review.userId.username === userData.username"
-    >
+  
+
+    <div class="d-grid mx-auto" style="display: flex; margin-bottom: 0px" *ngIf="review.userId.username === userData.username">
       <button
-        class="btn btn-primary btn-sm"
-        id="editButton"
-        style="margin-left: 5px; margin-bottom: 1px"
+        type="button"
+        class="btn btn-sm"
+        style="
+          margin-left: 5px;
+          margin-bottom: 1px;
+          background-color: lightblue;
+        "
         (click)="editMode = !editMode"
       >
-        Edit
+        <i class="fa fa-pen"></i>
       </button>
       <button
-        id="deleteButton"
-        class="btn btn-danger btn-sm"
-        style="margin-left: 5px"
+        class="btn btn-sm"
+        style="margin-left: 5px; background-color: lightcoral"
         (click)="deleteReview(review)"
       >
-        Delete
+        <i class="fa fa-trash"></i>
       </button>
     </div>
   </ul>

@@ -7,14 +7,14 @@
 </div>
 
 <!-- Carrusel -->
-<div class="container-lg">
-  <app-carousel></app-carousel>
+<div class="container-lg" >
+  <app-carousel [games]="recentGames"></app-carousel>
 
   <div class="row mt-5">
     <h1 class="mb-3">What people's talking about</h1>
     <hr/>
-    <div class="col-sm" *ngFor="let game of games; let i = index">
-      <app-card [game]="games[i]"></app-card>
+    <div class="col-sm" *ngFor="let game of moreLikedGames; let i = index">
+      <app-card [game]="moreLikedGames[i]"></app-card>
     </div>
   </div>
 </div>

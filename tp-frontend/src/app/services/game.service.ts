@@ -22,6 +22,10 @@ getGamesDataByDate(cant:number){
   return this.http.get<any>(this.URL + `/date/${cant}` )
 }
 
+getGamesDataByRating(cant:number){
+  return this.http.get<any>(this.URL + `/rating/${cant}` )
+}
+
 getGames(){
   return this.http.get<any>(this.URL + '/')
 }
