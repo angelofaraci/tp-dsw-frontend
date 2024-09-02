@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Game } from '../interfaces/game.interface';
+import { environment } from 'src/enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
-
-  private URL = 'http://localhost:3000/api/games'
+  private REQ = environment.apiUrl
+  
+  private URL = this.REQ + 'api/games'
 
 
 constructor(private http: HttpClient, private router: Router) { }

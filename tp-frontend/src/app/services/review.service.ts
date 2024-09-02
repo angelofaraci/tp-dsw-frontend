@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Review } from '../interfaces/review.interface';
+import { environment } from 'src/enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReviewService {
-  private URL = 'http://localhost:3000/api/reviews';
+  private REQ = environment.apiUrl;
+  private URL = this.REQ + 'api/reviews';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -51,6 +53,9 @@ export class ReviewService {
   }
 
   changeLikes(reviewId: any, action: any, userId: any) {
-    return this.http.post<any>(this.URL + `/${reviewId}/${action}/${userId}`, null);
+    return this.http.post<any>(
+      this.URL + `/${reviewId}/${action}/${userId}`,
+      null
+    );
   }
 }

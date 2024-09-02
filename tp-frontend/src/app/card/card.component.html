@@ -9,7 +9,7 @@
   />
   <div class="card-body">
     <h5 class="card-title">{{ game.name }}</h5>
-    <span class="badge text-bg-success mt-2">{{ game.rating }}</span>
+    <span class="badge {{ calculateColorRating(game.rating) }} mt-2">{{ game.rating }}</span>
 
     <hr />
     <p class="card-description">

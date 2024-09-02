@@ -11,7 +11,7 @@
           <a class="nav-link" routerLink="/signup" *ngIf="!authService.loggedIn() && !adminAuthService.loggedIn()">Sign Up</a>
           <a class="nav-link button" style="cursor: pointer;" (click)="authService.logOut()" *ngIf="authService.loggedIn()">Sign Out</a>
           <a class="nav-link button" style="cursor: pointer;" (click)="adminAuthService.logOut()" *ngIf="adminAuthService.loggedIn()">Sign Out</a>
-          <a class="nav-link" style="cursor: pointer;" routerLink="/myprofile" *ngIf="authService.loggedIn()">USUARIO</a>
+          <a class="nav-link" style="cursor: pointer;" routerLink="/myprofile" *ngIf="authService.loggedIn()">My Profile</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/creategame" *ngIf="adminAuthService.loggedIn()">Create Game</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/listgames" *ngIf="adminAuthService.loggedIn()">Game List</a>
           <a class="nav-link" style="cursor: pointer;" routerLink="/userlist" *ngIf="adminAuthService.loggedIn()">User List</a>

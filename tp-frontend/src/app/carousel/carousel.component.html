@@ -5,7 +5,7 @@
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner" style="border-radius: 10px;">
-      <div class="carousel-item "style="cursor: pointer;" *ngFor="let game of games; let i = index"  [class.active]="i==0"  routerLink="/game/game.id">
+      <div class="carousel-item "style="cursor: pointer;" *ngFor="let game of games; let i = index"  [class.active]="i==0"  routerLink="/game/{{game.id}}">
         <img src="{{ game.banner }}" class="d-block w-100" style="width: 200; height: 550px;" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h1> <span class="{{ calculateColorRating(game.rating) }}" >{{ game.rating }}</span> </h1>

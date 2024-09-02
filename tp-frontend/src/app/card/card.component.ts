@@ -17,4 +17,12 @@ export class CardComponent implements OnInit {
     shortDescription = shortDescription+'...'
     this.game.description = shortDescription
   }
+
+  calculateColorRating(number: number) {
+    if (number >= 70) {
+      return 'badge text-bg-success';
+    } else if (number >= 40) {
+      return 'badge text-bg-secondary';
+    } else return 'badge text-bg-danger';
+  }
 }

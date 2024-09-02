@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/enviroments/enviroment';
 
 
 @Injectable({
@@ -9,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  
-  private URL = 'http://localhost:3000/api/user'
+  private REQ = environment.apiUrl
+  private URL = this.REQ + 'api/user'
 
   constructor(private http: HttpClient, private router: Router) { }
 
