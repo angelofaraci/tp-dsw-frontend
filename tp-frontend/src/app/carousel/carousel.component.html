@@ -1,26 +1,69 @@
 <div id="carouselExampleCaptions" class="carousel slide">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner" style="border-radius: 10px;">
-      <div class="carousel-item "style="cursor: pointer;" *ngFor="let game of games; let i = index"  [class.active]="i==0"  routerLink="/game/{{game.id}}">
-        <img src="{{ game.banner }}" class="d-block w-100" style="width: 200; height: 550px;" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h1> <span class="{{ calculateColorRating(game.rating) }}" >{{ game.rating }}</span> </h1>
-          <p class="h1 fw-bold" style="-webkit-text-stroke: 1px black;">{{ game.name }}</p>
-        </div>
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+  <div class="carousel-inner" style="border-radius: 10px">
+    <div
+      class="carousel-item"
+      style="cursor: pointer"
+      *ngFor="let game of games; let i = index"
+      [class.active]="i == 0"
+      routerLink="/game/{{ game.id }}"
+    >
+      <img
+        id="game-{{ game.id }}"
+        src="{{ game.banner }}"
+        class="d-block w-100"
+        style="width: 200; height: 550px"
+        alt="..."
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h1>
+          <span class="{{ calculateColorRating(game.rating) }}">{{
+            game.rating
+          }}</span>
+        </h1>
+        <p class="h1 fw-bold" style="-webkit-text-stroke: 1px black">
+          {{ game.name }}
+        </p>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span  class="visually-hidden">Next</span>
-    </button>
   </div>
-
-
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleCaptions"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleCaptions"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
