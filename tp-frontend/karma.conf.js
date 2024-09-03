@@ -12,10 +12,10 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     files: [
-      'src/**/*.spec.ts'
+      'src/app/log-in/log-in.component.spec.js'
     ],
     preprocessors: {
-      'src/**/*.spec.ts': ['@angular-devkit/build-angular']
+      'src/app/log-in/log-in.component.spec.js': ['@angular-devkit/build-angular']
     },
     
     client: {

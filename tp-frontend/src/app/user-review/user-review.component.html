@@ -6,10 +6,15 @@
     >
       <h1>{{ this.review.rating }}</h1>
     </li>
+    <li
+      class="list-group-item "
+    >
+      <img src="{{this.review.gameId.cover}}" style="max-height: 100px; max-width: 100xp; aspect-ratio: 1; cursor: pointer" alt="" routerLink="/game/{{ this.review.gameId.id }}">
+    </li>
     <li class="list-group-item" style="width: 100%">
       <div class="col">
         <div class="d-flex w-100 justify-content-between">
-          <h3 class="mb-1">{{ this.review.gameId.name }}</h3>
+          <h3 class="mb-1" style="cursor: pointer;" routerLink="/game/{{ this.review.gameId.id }}">{{ this.review.gameId.name }}</h3>
         </div>
         <div *ngIf="review.spoiler_check">
           <h6
