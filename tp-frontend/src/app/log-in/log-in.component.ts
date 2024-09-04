@@ -15,7 +15,7 @@ export class LogInComponent {
 
   constructor(private authService: AuthService, private router: Router){  }
 
-  user = {
+  user:any = {
     email: '',
     password: ''
   }
@@ -25,7 +25,17 @@ invalid_password : boolean = false;
 
 error: boolean = false;
 errorMessage: string = '';
+  errorFound(err:any){
+    this.errorMessage = err.error.message
+        if (err.error.case == 'email'){
+          this.invalid_email = true;
+        }
+        if (err.error.case == 'password'){
+          this.invalid_password = true;
+        }
+        this.error = true;
 
+  }
   logIn(){
     this.invalid_email = false;
     this.invalid_password = false;
@@ -44,15 +54,8 @@ errorMessage: string = '';
     this.authService.logIn(this.user)
     .pipe(
       catchError((err: any) => {
-        this.errorMessage = err.error.message
-        if (err.error.case == 'email'){
-          this.invalid_email = true;
-        }
-        if (err.error.case == 'password'){
-          this.invalid_password = true;
-        }
-        this.error = true
-        return ''})
+        this.errorFound(err)
+        return err})
     )
       .subscribe(
         res => {

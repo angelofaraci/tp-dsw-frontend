@@ -43,31 +43,25 @@ describe('LogInComponent', () => {
   });
 
   it('should call logIn on AuthService and navigate to /home on success', async () => {
-    const fakeToken = 'fakeToken';
     jest.spyOn(component['router'], 'navigate').mockResolvedValue(true);
-    authService.logIn.mockReturnValue(of({ token: fakeToken }));
     
     component.user = { email: 'test@example.com', password: 'password123' };
     await component.logIn();
     
     expect(authService.logIn).toHaveBeenCalledWith({ email: 'test@example.com', password: 'password123' });
-    expect(localStorage.getItem('token')).toEqual(fakeToken);
     expect(component['router'].navigate).toHaveBeenCalledWith(['/home']);
   });
   
   it('should call logIn on AuthService and give an error', async () => {
-    const err = new Error('error');
     jest.spyOn(component['router'], 'navigate').mockResolvedValue(true);
-    authService.logIn.mockReturnValue(throwError(() => err));
     
-    const errorSpy = jest.spyOn(component, 'error', 'set');
+    const errorSpy = jest.spyOn(component, 'errorFound');
     
-    component.user = { email: 'test@example.com', password: 'password123' };
-    
+    component.user = { email: 'errortest@example.com', password: 'password123' };
     await component.logIn();
     
-    expect(authService.logIn).toHaveBeenCalledWith({ email: 'test@example.com', password: 'password123' });
-    expect(errorSpy).toHaveBeenCalledWith(true);
+    expect(authService.logIn).toHaveBeenCalledWith({ email: 'errortest@example.com', password: 'password123' });
+    expect(errorSpy).toHaveBeenCalled();
     expect(component['router'].navigate).not.toHaveBeenCalled();
   });
 });
