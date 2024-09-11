@@ -3,11 +3,26 @@
 <!-- Review -->
 <body>
   <app-game-info [gameData]="this.gameData"></app-game-info>
-  <div class="container mt-5 form border" *ngIf="!reviewed">
+  <div class="container mt-5 " *ngIf="!reviewed">
+      <button
+        id="editButton"
+        type="button"
+        class="btn btn-sm"
+        style="
+          background-color: lime;
+        "
+          data-bs-toggle="modal"
+          data-bs-target="#formModal"
+      >
+        <i class="fa fa-plus"> Add a review for this game</i>
+        
+      </button>
+  </div>
+  <div class="container mt-5 modal fade" id="formModal">
     <app-review-form
       [gameId]="this.gameData._id"
       [userId]="this.userData._id"
-      [isThisEdit]="false"
+      [isThisEdit]="this.reviewed"
     ></app-review-form>
   </div>
   <div *ngFor="let review of reviews; let i = index">

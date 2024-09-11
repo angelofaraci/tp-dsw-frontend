@@ -24,6 +24,16 @@ export class ReviewComponent implements OnInit {
     likeState: []
   };
 
+  newReview: Review = {
+    rating: 0,
+    body: '',
+    spoiler_check: false,
+    gameId: '',
+    userId: '',
+    updatedAt: '',
+    likeState: []
+  };
+
   @Input()
   gameData: Game = {
     rating: 0,
@@ -41,6 +51,10 @@ export class ReviewComponent implements OnInit {
 
   liked: boolean = false;
   disliked: boolean = false;
+
+  invalid_rating: boolean = false;
+  invalid_body: boolean = false;
+
 
   BodyLine1 = ''
   BodyLine2 = ''
@@ -129,7 +143,51 @@ export class ReviewComponent implements OnInit {
     this.disliked = !this.disliked;
     this.liked = false;
   }
+  editReview() {
+    if (!this.newReview.body || !this.newReview.rating || this.newReview.rating > 100) {
+      if (this.newReview.rating > 100) {
+        this.invalid_rating = true;
+        console.log(this.newReview.rating)
+      }
+      if (!this.newReview.body) {
+        this.invalid_body = true;
+      }
+      if (!this.newReview.rating) {
+        this.invalid_rating = true;
+      }
+      if (
+        this.newReview.rating &&
+        this.newReview.rating <= 100 &&
+        !this.newReview.body
+      ) {
+        this.invalid_rating = false;
+      }
+      if (
+        (!this.newReview.rating || this.newReview.rating > 100) &&
+        this.newReview.body
+      ) {
+        this.invalid_body = false;
+      }
+    } else {
+      this.invalid_body = false;
+      this.invalid_rating = false;
+      this.newReview.gameId = this.gameData._id
+      this.newReview.userId = this.userData._id
+      console.log(this.userData, this.gameData)
+      this.reviewService
+        .editReview(this.newReview, this.newReview.userId, this.newReview.gameId)
 
+        .pipe(
+          catchError((err: any) => {
+            return err;
+          })
+        )
+        .subscribe((res) => {
+          window.location.reload();
+          console.log(res);
+        });
+    }
+  }
 
   ngOnInit(): void {
     let color1 = String(0);

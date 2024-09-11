@@ -72,7 +72,7 @@ export class UserReviewComponent {
   
 
   editReview() {
-    const gameData = this.review.gameId;
+    const gameData = this.review.gameId._id;
     if (!this.review.body || !this.review.rating || this.review.rating > 100) {
       if (this.review.rating > 100) {
         this.invalid_rating = true;

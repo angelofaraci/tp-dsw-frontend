@@ -88,7 +88,10 @@
           margin-bottom: 1px;
           background-color: lightblue;
         "
-        (click)="editMode = !editMode"
+
+          data-bs-toggle="modal"
+          data-bs-target="#formModal"
+          
       >
         <i class="fa fa-pen"></i>
       </button>
@@ -104,7 +107,9 @@
   </ul>
 </div>
 
-<div class="container mt-5 form border" *ngIf="editMode">
+
+
+<div class="container mt-5 modal fade" id="formModal">
   <app-review-form
     [gameId]="this.gameData._id"
     [userId]="this.userData._id"

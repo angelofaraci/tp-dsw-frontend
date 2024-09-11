@@ -65,19 +65,38 @@ export class ReviewFormComponent {
       this.review.gameId = this.gameId
       this.review.userId = this.userId
       console.log(this.review)
-      this.reviewService
-        .addReview(this.review)
+        if (this.isThisEdit){
+          this.reviewService
+            .editReview(this.review, this.userId, this.gameId)
 
-        .pipe(
-          catchError((err: any) => {
-            return err;
-          })
-        )
-        .subscribe((res) => {
-          window.location.reload();
-          console.log(res);
-        });
-    }
+            .pipe(
+              catchError((err: any) => {
+              return err;
+              })
+            )
+            .subscribe((res) => {
+              window.location.reload();
+              console.log(res);
+            });
+        }
+          else {
+            this.reviewService
+            .addReview(this.review)
+  
+            .pipe(
+              catchError((err: any) => {
+                return err;
+              })
+            )
+            .subscribe((res) => {
+              window.location.reload();
+              console.log(res);
+            });
+          }
+
+      }
+      
+      
   }
 
   editReview() {
@@ -110,17 +129,7 @@ export class ReviewFormComponent {
       this.review.gameId = this.gameId
       this.review.userId = this.userId
       this.reviewService
-        .editReview(this.review, this.userId, this.gameId)
-
-        .pipe(
-          catchError((err: any) => {
-            return err;
-          })
-        )
-        .subscribe((res) => {
-          window.location.reload();
-          console.log(res);
-        });
+        
     }
   }
 
