@@ -49,7 +49,7 @@ describe('Post and delete a review', () => {
     cy.get('#email').type('test@test');
     cy.get('#password').type('passwordtest');
     cy.contains('button', 'Sign In').click();
-    cy.get('#game-22').click();
+    cy.get('.carousel-item').click();
     cy.get('#createReviewButton').click();
     cy.get('#rating').type('55');
     cy.get('#comment').type('this is a test');
@@ -64,7 +64,7 @@ describe('Post and delete a review', () => {
     cy.get('#email').type('test@test');
     cy.get('#password').type('passwordtest');
     cy.contains('button', 'Sign In').click();
-    cy.get('#game-22').click();
+    cy.get('.carousel-item').click();
     cy.get('#editButton').click();
     cy.get('#rating').type('55');
     cy.get('#comment').type('this is an edit');
@@ -79,7 +79,7 @@ describe('Post and delete a review', () => {
     cy.get('#email').type('test@test');
     cy.get('#password').type('passwordtest');
     cy.contains('button', 'Sign In').click();
-    cy.get('#game-22').click();
+    cy.get('.carousel-item').click();
     cy.contains('h3', 'test').should('exist');
     cy.get('#deleteButton').click();
     cy.wait(1000);
