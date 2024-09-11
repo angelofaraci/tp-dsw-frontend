@@ -50,6 +50,7 @@ describe('Post and delete a review', () => {
     cy.get('#password').type('passwordtest');
     cy.contains('button', 'Sign In').click();
     cy.get('#game-22').click();
+    cy.get('#createReviewButton').click();
     cy.get('#rating').type('55');
     cy.get('#comment').type('this is a test');
     cy.contains('h3', 'test').should('not.exist');
@@ -67,7 +68,7 @@ describe('Post and delete a review', () => {
     cy.get('#editButton').click();
     cy.get('#rating').type('55');
     cy.get('#comment').type('this is an edit');
-    cy.get('#edit-review').click();
+    cy.get('#submit-review').click();
     cy.wait(1000);
     cy.contains('h3', 'test').should('exist');
     cy.contains('p', 'this is an edit').should('exist');
