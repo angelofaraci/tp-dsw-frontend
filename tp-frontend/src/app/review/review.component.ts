@@ -4,6 +4,7 @@ import { catchError } from 'rxjs';
 import { Game } from '../interfaces/game.interface';
 import { Review } from '../interfaces/review.interface';
 import { User } from '../interfaces/user.interface';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-review',
@@ -12,7 +13,7 @@ import { User } from '../interfaces/user.interface';
 })
 export class ReviewComponent implements OnInit {
   constructor(private reviewService: ReviewService) {}
-
+  
   @Input()
   review: Review = {
     rating: 0,

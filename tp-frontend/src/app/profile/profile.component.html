@@ -12,6 +12,7 @@
           <h1 style="padding-bottom: 0%;">
             {{ this.user.username }}
             <button
+            *ngIf="this.sameUser"
             type="button"
             class="btn btn-sm"
             style="
@@ -23,9 +24,10 @@
             data-bs-toggle="modal"
             data-bs-target="#editModal"
           >
-            <i class="fa fa-pen" style="color: black"></i>
+            <i class="fa fa-edit" style="color: black"></i>
           </button>
           <button
+          *ngIf="this.sameUser"
           (click) = "deleteUser()"
             type="button"
             class="btn btn-sm"
@@ -100,6 +102,7 @@
       <app-user-review
         [review]="reviews[i]"
         [userData]="user"
+        [sameUser]="sameUser"
       ></app-user-review>
     </div>
   </body>

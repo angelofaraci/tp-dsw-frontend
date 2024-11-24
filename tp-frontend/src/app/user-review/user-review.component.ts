@@ -10,6 +10,7 @@ import { catchError } from 'rxjs';
 export class UserReviewComponent {
   constructor(private reviewService: ReviewService) {}
 
+
   @Input()
   review: any;
 
@@ -19,6 +20,9 @@ export class UserReviewComponent {
   BodyLine1 = ''
   BodyLine2 = ''
   BodyLine3 = ''
+
+  @Input()
+  sameUser: boolean = false;
 
   ngOnInit(): void {
     let color1 = String(0);
