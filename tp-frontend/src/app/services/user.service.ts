@@ -39,7 +39,12 @@ export class UserService {
 
   deleteUser(id: string){
 
-    return this.http.delete<any>(this.URL + '/' + id)
+    return this.http.delete<any>(this.URL + '/delete/' + id)
+  }
+
+  deleteThisUser(){
+
+    return this.http.delete<any>(this.URL + '/deleteThis')
   }
   
    

@@ -4,6 +4,7 @@ import { ReviewService } from '../services/review.service';
 import { GameService } from '../services/game.service';
 import { catchError, pipe } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { AdminAuthService } from '../services/admin.auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -30,11 +31,12 @@ export class ProfileComponent implements OnInit {
     private reviewService: ReviewService,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public adminAuthService: AdminAuthService
   ) {}
 
   async ngOnInit() {
-    if (this.router.url === '/myprofile') {
+    if (this.router.url === '/myprofile' ) {
       this.sameUser = true
       this.userService
         .getUserData()
@@ -103,6 +105,20 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  async deleteThisUser() {
+    await this.userService
+      .deleteThisUser()
+      .pipe(
+        catchError((err: any) => {
+          return err;
+        })
+      )
+      .subscribe((res) => {
+        this.authService.logOut();
+        this.router.navigate(['/home']);
+        console.log(res);
+      });
+  }
   async deleteUser() {
     await this.userService
       .deleteUser(this.user._id)
