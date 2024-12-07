@@ -3,20 +3,22 @@ describe('Post and delete a review', () => {
     cy.visit('/');
   });
 
-  // it('Should create an account', () => {
-  //   cy.contains('a', 'Sign Up').click()
-  //   cy.get('#user').type('test')
-  //   cy.get('#email').type('test@test')
-  //   cy.get('#password').type('passwordtest')
-  //   cy.contains('button', 'Confirm Registration').click()
-  //   cy.location().should((location) => {
-  //     expect(location.pathname).to.eq('/home');
-  //   });
-  //   cy.window().then((win) => {
-  //     const token = win.localStorage.getItem('token')
-  //     expect(token).to.be.ok
-  //   })
-  // })
+  it('Should create an account', () => {
+    cy.contains('a', 'Sign Up').click()
+    cy.get('#user').type('test')
+    cy.get('#email').type('test@test')
+    cy.get('#password').type('passwordtest')
+    cy.contains('button', 'Confirm Registration').click()
+    cy.location().should((location) => {
+      expect(location.pathname).to.eq('/home');
+    });
+    cy.window().then((win) => {
+      const token = win.localStorage.getItem('token')
+      expect(token).to.be.ok
+    })
+  })
+  
+  
 
   it('Should log in to an account', () => {
     //cy.contains('a', 'Sign Out').click()
@@ -32,6 +34,10 @@ describe('Post and delete a review', () => {
       expect(token).to.be.ok;
     });
   });
+
+ 
+  
+
 
   it('Should show the game page', () => {
     cy.contains('a', 'Log In').click();
@@ -79,7 +85,7 @@ describe('Post and delete a review', () => {
     cy.get('#email').type('test@test');
     cy.get('#password').type('passwordtest');
     cy.contains('button', 'Sign In').click();
-    cy.get('.carousel-item').click();
+    cy.get('.carousel-item').click({ multiple: true });
     cy.contains('h3', 'test').should('exist');
     cy.get('#deleteButton').click();
     cy.wait(1000);
