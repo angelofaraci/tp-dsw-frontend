@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:3000/'
-  };
+  production: true,
+  apiUrl: 'mongodb+srv://angelofaraci:angelofaraci@cluster0.xlzr0.mongodb.net/tp-database?retryWrites=true&w=majority&appName=Cluster0'
+};
