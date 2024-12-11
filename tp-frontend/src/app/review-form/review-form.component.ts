@@ -36,8 +36,8 @@ export class ReviewFormComponent {
   invalid_body: boolean = false;
 
   postReview() {
-    if (!this.review.body || !this.review.rating || this.review.rating > 100) {
-      if (this.review.rating > 100) {
+    if (!this.review.body || !this.review.rating || this.review.rating > 100 || this.review.rating  <= 0 || this.review.rating%1 !== 0) {
+      if (this.review.rating > 100 || this.review.rating  <= 0 || this.review.rating%1 !== 0) {
         this.invalid_rating = true;
       }
       if (!this.review.body) {
@@ -100,8 +100,8 @@ export class ReviewFormComponent {
   }
 
   editReview() {
-    if (!this.review.body || !this.review.rating || this.review.rating > 100) {
-      if (this.review.rating > 100) {
+    if (!this.review.body || !this.review.rating || this.review.rating > 100 || this.review.rating  <= 0 || this.review.rating%1 !== 0) {
+      if (this.review.rating > 100 || this.review.rating  <= 0 || this.review.rating%1 !== 0) {
         this.invalid_rating = true;
       }
       if (!this.review.body) {
@@ -137,6 +137,6 @@ export class ReviewFormComponent {
     if(this.isThisEdit){
       this.editReview()
     } else {this.postReview()}
-  }
+  }
 
 }
